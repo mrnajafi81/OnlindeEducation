@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\TeachersController;
+use App\Http\Controllers\admin\CoursesController;
+use App\Http\Controllers\admin\LessonsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin.index');
+
+    Route::resource('teachers', TeachersController::class)->except('show');
+    Route::resource('courses', CoursesController::class);
+
+    Route::controller(LessonsController::class)->name('lessons.')->group(function () {
+        // this rote that need to know course id
+        Route::prefix('courses/{course}/lessons')->group(function (){
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+        });
+        // this rote that no need to know course id
+        Route::prefix('courses/lessons')->group(function (){
+            Route::post('/','store')->name('store');
+            Route::get('/{lesson}/edit','edit')->name('edit');
+            Route::put('/{lesson}','update')->name('update');
+            Route::delete('/{lesson}/destroy','destroy')->name('destroy');
+        });
+    });
 });
