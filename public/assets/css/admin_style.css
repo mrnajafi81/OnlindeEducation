@@ -286,3 +286,8 @@ fs-9 {
     text-align: right !important;
     direction: rtl !important;
 }
+
+.danger-checked:checked{
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+}

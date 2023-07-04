@@ -11,8 +11,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.successAlert')
-            @include('admin.components.errorsAlert')
+            @include('admin.components.allAlerts')
 
             @if($teachers->count())
                 <div id="table_overflow">
@@ -30,13 +29,15 @@
                         @foreach($teachers as $teacher)
                             <tr class="text-muted">
                                 <td nowrap>#{{$teacher->id}}</td>
-                                <td><img src="{{asset($teacher->image)}}" width="70px" class="rounded-1" alt="{{$teacher->name}}"></td>
+                                <td><img src="{{asset($teacher->image)}}" width="70px" class="rounded-1"
+                                         alt="{{$teacher->name}}"></td>
                                 <td>{{$teacher->name}}</td>
                                 <td style="min-width: 200px !important;">{{$teacher->about}}</td>
                                 <td nowrap>
                                     <a href="{{route('teachers.edit',$teacher->id)}}"
                                        class="btn btn-sm btn-warning"><small>ویرایش</small></a>
-                                    <form class="d-inline-block" action="{{route('teachers.destroy',$teacher->id)}}" method="post">
+                                    <form class="d-inline-block" action="{{route('teachers.destroy',$teacher->id)}}"
+                                          method="post">
                                         <div class="form-group">
                                             @csrf
                                             @method('DELETE')

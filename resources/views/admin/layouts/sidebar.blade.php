@@ -7,15 +7,13 @@
             </a>
             <a href="#" class="nav-item nav-link d-block dropdown-toggle" data-bs-toggle="collapse"
                data-bs-target="#products" role="button" aria-expanded="false">
-                <span class="fa fa-shopping-bag" style="margin-left: 5px"></span>
-                محصولات
+                <span class="fa fa-graduation-cap" style="margin-left: 5px"></span>
+                دوره ها
             </a>
             <div class="collapse" id="products">
                 <nav class="nav flex-column align-items-start ps-4">
-                    <a href="{{route('products.create')}}" class="nav-link">افزودن محصول</a>
-                    <a href="{{route('categories.index')}}" class="nav-link">دسته بندی ها</a>
-                    <a href="{{route('tags.index')}}" class="nav-link">برچسب ها</a>
-                    <a href="{{route('products.trashed')}}" class="nav-link">محصولات حذف شده</a>
+                    <a href="{{route('courses.index')}}" class="nav-link">لیست محصولات</a>
+                    <a href="{{route('teachers.index')}}" class="nav-link">لیست اساتید</a>
                 </nav>
             </div>
             <a href="#" class="nav-item nav-link d-block">
