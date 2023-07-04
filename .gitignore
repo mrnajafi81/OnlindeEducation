@@ -18,7 +18,7 @@ yarn-error.log
 /.idea
 /.vscode
 
-/images/*
-/sounds/*
-/files/*
-/videos/*
+/public/images/*
+/public/sounds/*
+/public/files/*
+/public/videos/*
