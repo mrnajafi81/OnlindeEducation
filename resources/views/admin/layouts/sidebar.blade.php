@@ -12,8 +12,10 @@
             </a>
             <div class="collapse" id="products">
                 <nav class="nav flex-column align-items-start ps-4">
-                    <a href="{{route('courses.index')}}" class="nav-link">لیست محصولات</a>
+                    <a href="{{route('courses.index')}}" class="nav-link">لیست دوره ها</a>
+                    <a href="{{route('courses.create')}}" class="nav-link">افزودن دوره</a>
                     <a href="{{route('teachers.index')}}" class="nav-link">لیست اساتید</a>
+                    <a href="{{route('teachers.create')}}" class="nav-link">افزودن استاد</a>
                 </nav>
             </div>
             <a href="#" class="nav-item nav-link d-block">

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\TeachersController;
 use App\Http\Controllers\admin\CoursesController;
 use App\Http\Controllers\admin\LessonsController;
+use App\Http\Controllers\admin\QuestionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,21 @@ Route::prefix('admin')->group(function () {
             Route::get('/{lesson}/edit','edit')->name('edit');
             Route::put('/{lesson}','update')->name('update');
             Route::delete('/{lesson}/destroy','destroy')->name('destroy');
+        });
+    });
+
+    Route::controller(QuestionsController::class)->name('questions.')->group(function () {
+        // this rote that need to know lesson id
+        Route::prefix('lessons/{lesson}/questions')->group(function (){
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+        });
+        // this rote that no need to know lesson id
+        Route::prefix('lessons/questions')->group(function (){
+            Route::post('/','store')->name('store');
+            Route::get('/{question}/edit','edit')->name('edit');
+            Route::put('/{question}','update')->name('update');
+            Route::delete('/{question}/destroy','destroy')->name('destroy');
         });
     });
 });

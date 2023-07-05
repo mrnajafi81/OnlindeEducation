@@ -77,8 +77,8 @@
                                     @endif
                                 </td>
                                 <td nowrap>
-                                    <a href="{{route('lessons.index',$lesson->id)}}"
-                                       class="btn btn-sm btn-primary"><small>ویرایش سوالات</small></a>
+                                    <a href="{{route('questions.index',$lesson->id)}}"
+                                       class="btn btn-sm btn-primary"><small>تغییر سوالات</small></a>
                                 </td>
                                 <td nowrap>
                                     <a href="{{route('lessons.edit',$lesson->id)}}"

@@ -291,3 +291,21 @@ fs-9 {
     background-color: var(--bs-danger);
     border-color: var(--bs-danger);
 }
+
+.fs-60{
+    font-size: 60% !important;
+}
+
+@media screen and (max-width: 492px){
+    .question-buttons{
+        float: left;
+    }
+}
+
+@media screen and (min-width: 492px) {
+    .question-buttons{
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+    }
+}
