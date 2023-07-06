@@ -18,9 +18,9 @@
                     <a href="{{route('teachers.create')}}" class="nav-link">افزودن استاد</a>
                 </nav>
             </div>
-            <a href="#" class="nav-item nav-link d-block">
-                <span class="fa fa-chart-pie" style="margin-left: 5px"></span>
-                گزارشات
+            <a href="{{route('groups.index')}}" class="nav-item nav-link d-block">
+                <span class="fa fa-database" style="margin-left: 5px"></span>
+                گروه ها
             </a>
             <a href="#" class="nav-item nav-link d-block">
                 <span class="fa fa-credit-card" style="margin-left: 5px"></span>
