@@ -22,4 +22,9 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function groups(): HasMany
+    {
+        return $this->hasMany(Group::class);
+    }
 }
