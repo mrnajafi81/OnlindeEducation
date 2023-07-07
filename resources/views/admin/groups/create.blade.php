@@ -17,7 +17,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form action="{{route('groups.store')}}" method="post">
 
@@ -47,7 +47,8 @@
                     <label class="col-form-label col-sm-3 col-lg-2 text-nowrap">شروع ثبت نام از</label>
                     <div class="col-sm-9 col-lg-10">
                         <input class="form-control @error('started_at') is-invalid @enderror"
-                               name="started_at" value="{{old('started_at')}}" x-model="started_at" @click="$refs.ended_at.value = ''"
+                               name="started_at" value="{{old('started_at')}}" x-model="started_at"
+                               @click="$refs.ended_at.value = ''"
                                data-jdp data-jdp-min-date="today" placeholder="لطفا تاریخ شروع ثبت نام را انتخاب کنید">
                     </div>
                 </div>
@@ -57,7 +58,8 @@
                     <div class="col-sm-9 col-lg-10">
                         <input class="form-control @error('ended_at') is-invalid @enderror"
                                name="ended_at" value="{{old('ended_at')}}" x-ref="ended_at"
-                               data-jdp :data-jdp-min-date="started_at" placeholder="لطفا تاریخ پایان ثبت نام را انتخاب کنید">
+                               data-jdp :data-jdp-min-date="started_at"
+                               placeholder="لطفا تاریخ پایان ثبت نام را انتخاب کنید">
                     </div>
                 </div>
 
@@ -78,7 +80,7 @@
         jalaliDatepicker.startWatch({
             minDate: "attr",
             maxDate: "attr",
-            separatorChars: {date:'-'},
+            separatorChars: {date: '-'},
         });
     </script>
 @endsection

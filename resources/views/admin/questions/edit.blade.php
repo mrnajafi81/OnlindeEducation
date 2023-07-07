@@ -13,7 +13,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form action="{{route('questions.update',$question->id)}}" method="post">
 
@@ -81,7 +81,8 @@
                     <label class="col-form-label col-sm-3 col-lg-2 text-nowrap">امتیاز سوال</label>
                     <div class="col-sm-9 col-lg-10">
                         <input class="form-control plc-rtl @error('order') is-invalid @enderror" type="number"
-                               name="score" placeholder="امتیاز سوال را وارد کنید" value="{{$question->score}}" min="1" max="100">
+                               name="score" placeholder="امتیاز سوال را وارد کنید" value="{{$question->score}}" min="1"
+                               max="100">
                     </div>
                 </div>
 

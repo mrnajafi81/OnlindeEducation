@@ -7,7 +7,8 @@
 @endsection
 
 @section('content')
-    <div class="card m-5 border bg-transparent border-0" x-data="{started_at:'{{$group->started_at->toJalali()->format('Y-m-d')}}'}">
+    <div class="card m-5 border bg-transparent border-0"
+         x-data="{started_at:'{{$group->started_at->toJalali()->format('Y-m-d')}}'}">
         <div class="card-header border-bottom border-info border-3 bg-transparent px-0 fw-medium">
             <span>
                ویرایش گروه آموزشی
@@ -17,7 +18,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form action="{{route('groups.update',$group->id)}}" method="post">
 
@@ -60,7 +61,8 @@
                     <label class="col-form-label col-sm-3 col-lg-2 text-nowrap">پایان ثبت نام تا</label>
                     <div class="col-sm-9 col-lg-10">
                         <input class="form-control @error('ended_at') is-invalid @enderror"
-                               name="ended_at" value="{{$group->ended_at->toJalali()->format('Y-m-d')}}" x-ref="ended_at"
+                               name="ended_at" value="{{$group->ended_at->toJalali()->format('Y-m-d')}}"
+                               x-ref="ended_at"
                                data-jdp :data-jdp-min-date="started_at"
                                placeholder="لطفا تاریخ پایان ثبت نام را انتخاب کنید">
                     </div>

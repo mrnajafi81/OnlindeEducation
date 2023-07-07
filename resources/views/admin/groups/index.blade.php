@@ -15,7 +15,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             @if($groups->count())
                 <div id="table_overflow">

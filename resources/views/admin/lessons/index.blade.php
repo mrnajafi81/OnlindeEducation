@@ -17,7 +17,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             @if($course->lessons->count())
                 <div id="table_overflow">
@@ -43,7 +43,8 @@
                                 <td>{{$lesson->order}}</td>
                                 <td>
                                     @if($lesson->video)
-                                        <a href="{{url($lesson->video)}}" class="btn btn-sm btn-primary" target="_blank">
+                                        <a href="{{url($lesson->video)}}" class="btn btn-sm btn-primary"
+                                           target="_blank">
                                             <small><i class="fa fa-sm fa-link"></i></small>
                                         </a>
                                     @else
@@ -52,7 +53,8 @@
                                 </td>
                                 <td>
                                     @if($lesson->sound)
-                                        <a href="{{url($lesson->sound)}}" class="btn btn-sm btn-primary" target="_blank">
+                                        <a href="{{url($lesson->sound)}}" class="btn btn-sm btn-primary"
+                                           target="_blank">
                                             <small><i class="fa fa-sm fa-link"></i></small>
                                         </a>
                                     @else

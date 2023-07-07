@@ -6,7 +6,7 @@
     <script>
         function testData() {
             return {
-                hasTest : 1,
+                hasTest: 1,
             }
         }
     </script>
@@ -23,7 +23,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form x-data="testData()" action="{{route('lessons.store')}}" method="post" enctype="multipart/form-data">
 
@@ -77,7 +77,8 @@
                     <label class="col-form-label col-sm-3 col-lg-2 text-nowrap">آزمون دارد؟</label>
                     <div class="col-sm-9 col-lg-10 d-flex align-items-center gap-3">
                         <div>
-                            <input class="form-check-input" type="radio" name="has_test" value="1" x-model="hasTest" checked>
+                            <input class="form-check-input" type="radio" name="has_test" value="1" x-model="hasTest"
+                                   checked>
                             <label class="form-check-label">
                                 بله
                             </label>
@@ -101,7 +102,8 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm small btn-primary btn-block col-6 col-sm-4 col-md-3 col-lg-2">
+                    <button type="submit"
+                            class="btn btn-sm small btn-primary btn-block col-6 col-sm-4 col-md-3 col-lg-2">
                         افزودن درس
                     </button>
                 </div>

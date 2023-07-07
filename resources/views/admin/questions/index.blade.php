@@ -24,7 +24,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             @if($lesson->questions->count())
                 <div class="row">
@@ -36,14 +36,15 @@
                                         <span>سوال</span>
                                         <span>{{$key+1}}_ </span>
                                         <span>{{$question->question_text}}</span>
-                                        <span class="small text-muted text-nowrap">(امتیاز : {{$question->score}})</span>
+                                        <span
+                                                class="small text-muted text-nowrap">(امتیاز : {{$question->score}})</span>
                                     </p>
                                     <p class="card-title">
                                         <span>گزینه 1: </span>
                                         <span>{{$question->option1}}</span>
                                         @if($question->answer == 1)
                                             <span
-                                                class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
+                                                    class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
                                         @endif
                                     </p>
                                     <p class="card-title">
@@ -51,7 +52,7 @@
                                         <span>{{$question->option2}}</span>
                                         @if($question->answer == 2)
                                             <span
-                                                class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
+                                                    class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
                                         @endif
                                     </p>
                                     <p class="card-title">
@@ -59,7 +60,7 @@
                                         <span>{{$question->option3}}</span>
                                         @if($question->answer == 3)
                                             <span
-                                                class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
+                                                    class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
                                         @endif
                                     </p>
                                     <p class="card-title mb-0">
@@ -67,7 +68,7 @@
                                         <span>{{$question->option4}}</span>
                                         @if($question->answer == 4)
                                             <span
-                                                class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
+                                                    class="fs-60 text-white badge bg-primary rounded-pill fw-light">پاسخ</span>
                                         @endif
                                     </p>
                                     <div class="question-buttons">

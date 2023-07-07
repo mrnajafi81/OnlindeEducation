@@ -11,8 +11,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.successAlert')
-            @include('admin.components.errorsAlert')
+            @include('components.allAlerts')
 
             @if($courses->count())
                 <div id="table_overflow">
@@ -36,7 +35,8 @@
                         @foreach($courses as $course)
                             <tr class="text-muted border-bottom">
                                 <td nowrap>#{{$course->id}}</td>
-                                <td><img src="{{asset($course->image)}}" width="70px" class="rounded-1" alt="{{$course->name}}"></td>
+                                <td><img src="{{asset($course->image)}}" width="70px" class="rounded-1"
+                                         alt="{{$course->name}}"></td>
                                 <td>{{$course->title}}</td>
                                 <td>{{$course->teacher->name}}</td>
                                 <td class="text-nowrap">
@@ -44,7 +44,8 @@
                                     <span class="small">تومان</span>
                                 </td>
                                 <td>{{$course->support_number}}</td>
-                                <td><a href="{{url($course->slug)}}" class="btn btn-sm btn-light rounded-0 fw-normal">کپی کردن</a></td>
+                                <td><a href="{{url($course->slug)}}" class="btn btn-sm btn-light rounded-0 fw-normal">کپی
+                                        کردن</a></td>
                                 <td nowrap>{{$course->type}}</td>
                                 <td nowrap>{{$course->duration}}</td>
                                 <td nowrap>
@@ -53,10 +54,12 @@
                                 </td>
                                 <td nowrap>
                                     <a href="{{route('courses.show',$course->id)}}"
-                                       class="btn btn-sm btn-info"><small><i class="text-light fs-9 fa fa-eye"></i></small></a>
+                                       class="btn btn-sm btn-info"><small><i
+                                                    class="text-light fs-9 fa fa-eye"></i></small></a>
                                     <a href="{{route('courses.edit',$course->id)}}"
                                        class="btn btn-sm btn-warning"><small><i class="text-light fa fa-pencil-alt"></i></small></a>
-                                    <form class="d-inline-block" action="{{route('courses.destroy',$course->id)}}" method="post">
+                                    <form class="d-inline-block" action="{{route('courses.destroy',$course->id)}}"
+                                          method="post">
                                         <div class="form-group">
                                             @csrf
                                             @method('DELETE')

@@ -26,7 +26,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form x-data="testData()" action="{{route('lessons.update',$lesson->id)}}" method="post"
                   enctype="multipart/form-data">
@@ -58,7 +58,8 @@
                                 <small><i class="fa fa-sm fa-link"></i></small>
                             </a>
                             <div class="text-nowrap">
-                                <input name="delete_video" class="form-check-input danger-checked" type="checkbox" value="1" x-model="deleteVideo">
+                                <input name="delete_video" class="form-check-input danger-checked" type="checkbox"
+                                       value="1" x-model="deleteVideo">
                                 <label class="form-check-label small">
                                     حذف کردن
                                 </label>
@@ -77,7 +78,8 @@
                                 <small><i class="fa fa-sm fa-link"></i></small>
                             </a>
                             <div class="text-nowrap">
-                                <input name="delete_sound" class="form-check-input danger-checked" type="checkbox" value="1" x-model="deleteSound">
+                                <input name="delete_sound" class="form-check-input danger-checked" type="checkbox"
+                                       value="1" x-model="deleteSound">
                                 <label class="form-check-label small">
                                     حذف کردن
                                 </label>
@@ -96,7 +98,8 @@
                                 <small><i class="fa fa-sm fa-link"></i></small>
                             </a>
                             <div class="text-nowrap">
-                                <input name="delete_file" class="form-check-input danger-checked" type="checkbox" value="1" x-model="deleteFile">
+                                <input name="delete_file" class="form-check-input danger-checked" type="checkbox"
+                                       value="1" x-model="deleteFile">
                                 <label class="form-check-label small">
                                     حذف کردن
                                 </label>
@@ -136,7 +139,8 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm small btn-warning btn-block col-6 col-sm-4 col-md-3 col-lg-2">
+                    <button type="submit"
+                            class="btn btn-sm small btn-warning btn-block col-6 col-sm-4 col-md-3 col-lg-2">
                         ویرایش درس
                     </button>
                 </div>

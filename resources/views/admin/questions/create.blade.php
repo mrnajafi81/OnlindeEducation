@@ -16,7 +16,7 @@
         </div>
         <div class="card-body px-0">
 
-            @include('admin.components.allAlerts')
+            @include('components.allAlerts')
 
             <form action="{{route('questions.store')}}" method="post">
 
@@ -90,7 +90,8 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm small btn-primary btn-block col-6 col-sm-4 col-md-3 col-lg-2">
+                    <button type="submit"
+                            class="btn btn-sm small btn-primary btn-block col-6 col-sm-4 col-md-3 col-lg-2">
                         افزودن سوال
                     </button>
                 </div>
