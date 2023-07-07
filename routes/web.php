@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\CoursesController;
 use App\Http\Controllers\admin\LessonsController;
 use App\Http\Controllers\admin\QuestionsController;
 use App\Http\Controllers\admin\GroupsController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,7 @@ use App\Http\Controllers\admin\GroupsController;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
+    Route::middleware('auth')->get('/', function () {
         return view('admin.index');
     })->name('admin.index');
 
@@ -58,3 +60,23 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('groups', GroupsController::class)->except('show');
 });
+
+Route::controller(AuthController::class)->name('auth.')->group(function () {
+    Route::get('auth', 'index')->name('index');
+    Route::post('pre-register', 'preRegister')->name('pre-register');
+    Route::post('login', 'login')->name('login');
+
+
+    Route::get('verify-number','verifyNumberForm')->name('verify-number-form');
+    Route::post('verify-number','verifyNumber')->name('verify-number');
+    Route::post('send-verify-number-again','sendVerifyCodeAgain')->name('send-verify-code-again');
+
+    Route::get('/change-captcha', 'changeCaptcha')->name('change_captcha');
+
+
+});
+
+Route::controller(IndexController::class)->name('front.')->group(function (){
+    Route::get('/','index')->name('index');
+});
+
