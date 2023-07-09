@@ -17,8 +17,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        Auth::logout();
-        return view('auth.form');
+        return view('front.auth.form');
     }
 
     public function login(LoginRequest $request)
@@ -81,7 +80,7 @@ class AuthController extends Controller
     public function verifyNumberForm()
     {
         $number = session()->get('user')['number'];
-        return view('front.verify_number', compact('number'));
+        return view('front.auth.verify_number', compact('number'));
     }
 
     public function verifyNumber(VerifyNumberRequest $request)

@@ -21,7 +21,7 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::middleware('auth')->get('/', function () {
+    Route::get('/', function () {
         return view('admin.index');
     })->name('admin.index');
 
@@ -72,11 +72,11 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::post('send-verify-number-again','sendVerifyCodeAgain')->name('send-verify-code-again');
 
     Route::get('/change-captcha', 'changeCaptcha')->name('change_captcha');
-
-
 });
 
 Route::controller(IndexController::class)->name('front.')->group(function (){
     Route::get('/','index')->name('index');
+
+    Route::get('course/{course}','showCourse')->name('course');
 });
 
