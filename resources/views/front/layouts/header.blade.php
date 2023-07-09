@@ -17,9 +17,15 @@
 
         <!--buttons-->
         <div class="d-flex justify-content-end align-items-center gap-3">
-            <button class="btn-hover btn btn-sm text-color-main border-color-main fw-medium border-2 text-nowrap">
-                ثبت نام | ورود
-            </button>
+            @if(auth()->user())
+                <a href="#" class="btn-hover btn btn-sm text-color-main border-color-main fw-medium border-2 text-nowrap">
+                    {{auth()->user()->fullname}}
+                </a>
+            @else
+                <button class="btn-hover btn btn-sm text-color-main border-color-main fw-medium border-2 text-nowrap">
+                    ثبت نام | ورود
+                </button>
+            @endif
             <button class="btn btn-secondary btn-hover fs-8 d-flex align-items-center py-2
                  border-2 border-color-main text-color-main bg-white
                  d-block d-md-none" @click="mobileMenuHide = !mobileMenuHide">
@@ -30,7 +36,8 @@
     </div>
 
     <!--mobile menu-->
-    <nav id="mobile-menu" class="nav flex-column fw-medium text-center mt-3 d-none" :class="{'d-none':mobileMenuHide}" x-transition>
+    <nav id="mobile-menu" class="nav flex-column fw-medium text-center mt-3 d-none" :class="{'d-none':mobileMenuHide}"
+         x-transition>
         <a class="border m-3 border-2 nav-link text-dark" href="#">صفحه اصلی</a>
         <a class="border m-3 border-2 nav-link text-dark" href="#">دوره ها</a>
         <a class="border m-3 border-2 nav-link text-dark" href="#">تماس با ما</a>
