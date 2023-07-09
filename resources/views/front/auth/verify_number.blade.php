@@ -2,7 +2,7 @@
 
 @section('title','اعتبار سنجی شماره موبایل')
 
-@section('body-contents')
+@section('contents')
     <section class="container-fluid py-2 py-sm-3 py-md-4 py-lg-5 px-2 px-md-3 px-lg-5">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
