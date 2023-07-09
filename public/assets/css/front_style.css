@@ -1,0 +1,70 @@
+/*global class and styles*/
+
+*:not(i) {
+    font-family: Vazirmatn !important;
+}
+
+:root {
+    --main-color: #26967f;
+}
+
+.text-color-main{
+    color: var(--main-color) !important;
+}
+
+.bg-color-main{
+    background-color: var(--main-color) !important;
+}
+
+.border-color-main{
+    border-color: var(--main-color) !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.ltr {
+    direction: ltr !important;
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+.fs-55 {
+    font-size: 1.1rem !important;
+}
+
+.fs-9 {
+    font-size: 92%;
+}
+
+.fs-8 {
+    font-size: 85%;
+}
+
+.bg-second {
+    background: rgba(245, 245, 245, 0.62) !important;
+}
+
+/*end global class and styles*/
+
+/*header and footer*/
+.btn-hover:hover,#mobile-menu a:hover{
+    background-color: var(--main-color) !important;
+    color: white !important;
+    border-color: var(--main-color);
+}
+/*end header and footer*/
+
+/*course page style*/
+#course-title{
+    min-height: 120px;
+}
+
+#course-info p {
+    margin-bottom: 0 !important;
+}
+/*end course page style*/
+
