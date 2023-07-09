@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('front.layouts.app')
 
-@section('title','سامانه سوالات')
+@section('title','سامانه آموزش مجازی امامت')
 
-@section('body-contents')
-    <h1>سلام به صفحه اصلی خوش آمدید</h1>
-    @if(auth()->user())
-        {{dump(auth()->user())}}
-    @endif
+@section('contents')
+
+
+    <section id="main-content" style="height: 1000px;">
+        سلام
+    </section>
+
+
 @endsection

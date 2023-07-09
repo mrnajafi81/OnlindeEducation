@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('front.layouts.app')
 
-@section('title','ورود - ثبت نام در سامانه')
+@section('title','ورود - ثبت نام در سامانه امامت')
 
 @section('head')
     <style>
@@ -10,21 +10,18 @@
     </style>
 @endsection
 
-@section('body-contents')
-    <section class="container-fluid py-2 py-sm-3 py-md-4 py-lg-5 px-2 px-md-3 px-lg-5">
+@section('contents')
+    <section class="container-fluid py-2 py-sm-3 py-md-4 py-lg-5 px-2 px-md-3 px-lg-5 my-3">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
-            <div id="logo" class="w-100 d-flex justify-content-center mb-4">
-                {{--                <img src="{{asset('assets/images/bootstrap-logo.png')}}" width="100px" class="mx-auto">--}}
-            </div>
 
-            <div class="card border-primary px-md-4 px-lg-5 mb-3">
+            <div class="card border-color-main px-md-4 px-lg-5 mb-3">
                 <div class="card-body">
                     <ul class="nav nav-pills w-100 d-flex flex-nowrap justify-content-between" id="pills-tab"
                         role="tablist">
                         <li class="nav-item w-100 h-100 h-100" role="presentation">
                             <button
-                                class="nav-link border border-primary w-100 h-100 {{session()->has('login')?'':'active'}}"
+                                class="nav-link border border-color-main w-100 h-100 {{session()->has('login')?'':'active'}}"
                                 id="pills-register-tab"
                                 data-bs-toggle="pill"
                                 data-bs-target="#register" type="button" role="tab" aria-controls="register"
@@ -34,7 +31,7 @@
                         </li>
                         <li class="nav-item w-100 h-100 h-100" role="presentation">
                             <button
-                                class="nav-link border border-primary w-100 h-100 {{session()->has('login')?'active':''}}"
+                                class="nav-link border border-color-main w-100 h-100 {{session()->has('login')?'active':''}}"
                                 id="pills-login-tab"
                                 data-bs-toggle="pill"
                                 data-bs-target="#login" type="button" role="tab"
@@ -46,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="card border-primary px-md-4 px-lg-5">
+            <div class="card border-color-main px-md-4 px-lg-5">
                 <div class="card-body tab-content">
 
                     <!--register section-->
@@ -54,7 +51,7 @@
                          role="tabpanel"
                          aria-labelledby="register-tab">
                         <div class="card-title d-flex justify-content-center mb-3 mt-3">
-                            <h1 class="h4 fw-bold text-muted">ثبت نام در سامانه</h1>
+                            <h1 class="h4 fw-bold text-muted">ثبت نام در سامانه امامت</h1>
                         </div>
 
                         @include('components.errorsAlert')
@@ -65,21 +62,21 @@
 
                             <div class="mb-3">
                                 <label class="form-label">نام و نام خانوادگی :</label>
-                                <input class="form-control border-primary @error('fullname') is-invalid @enderror"
+                                <input class="form-control border-color-main @error('fullname') is-invalid @enderror"
                                        type="text" name="fullname" placeholder="نام و نام خانوادگی خود را وارد کنید"
                                        value="{{old('fullname')}}">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">شماره تلفن :</label>
-                                <input class="form-control border-primary @error('number') is-invalid @enderror"
+                                <input class="form-control border-color-main @error('number') is-invalid @enderror"
                                        type="number" name="number" placeholder="مثال : 09170001122"
                                        value="{{old('number')}}">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">رمز عبور :</label>
-                                <input class="form-control border-primary @error('password') is-invalid @enderror"
+                                <input class="form-control border-color-main @error('password') is-invalid @enderror"
                                        type="password" name="password" placeholder="رمز عبور موردنظر خود را وارد کنید">
                                 <span class="small text-danger text-muted"><small>* رمز عبور باید حداقل 8 کاراکتر و شامل حرف و عدد باشد</small></span>
                             </div>
@@ -87,13 +84,13 @@
                             <div class="mb-4">
                                 <label class="form-label">تکرار رمز عبور :</label>
                                 <input
-                                    class="form-control border-primary @error('password_confirmation') is-invalid @enderror"
+                                    class="form-control border-color-main @error('password_confirmation') is-invalid @enderror"
                                     type="password" name="password_confirmation"
                                     placeholder="تکرار رمز عبور را وارد کنید">
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary d-block w-100">
+                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100">
                                     ثبت نام
                                 </button>
                             </div>
@@ -108,7 +105,7 @@
                          role="tabpanel"
                          aria-labelledby="login-tab">
                         <div class="card-title d-flex justify-content-center mb-4 mt-3">
-                            <h1 class="h4 fw-bold text-muted">ورود به سامانه</h1>
+                            <h1 class="h4 fw-bold text-muted">ورود به سامانه امامت</h1>
                         </div>
 
                         @include('components.errorsAlert')
@@ -119,7 +116,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">شماره تلفن :</label>
-                                <input class="form-control border-primary @error('number') is-invalid @enderror"
+                                <input class="form-control border-color-main @error('number') is-invalid @enderror"
                                        type="number" name="number" placeholder="مثال : 09170001122"
                                        id="number"
                                        value="{{old('number')}}">
@@ -127,7 +124,7 @@
 
                             <div class="mb-4">
                                 <label class="form-label">رمز عبور :</label>
-                                <input class="form-control border-primary @error('password') is-invalid @enderror"
+                                <input class="form-control border-color-main @error('password') is-invalid @enderror"
                                        type="password" name="password" placeholder="رمز عبور خود را وارد کنید">
                             </div>
 
@@ -145,7 +142,7 @@
                             </div>
 
                             <div class="form-check-inline mb-3">
-                                <input class="form-check-input border-primary" type="checkbox" name="remember_me"
+                                <input class="form-check-input border-color-main" type="checkbox" name="remember_me"
                                        value="true">
                                 <label class="form-check-label">
                                     <small>
@@ -155,7 +152,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary d-block w-100">
+                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100">
                                     ورود
                                 </button>
                             </div>

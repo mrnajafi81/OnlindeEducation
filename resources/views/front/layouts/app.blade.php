@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.rtl.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/Vazirmatn-font-face.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/admin_style.css')}}">
-
     <script defer src="{{asset('assets/js/alpinejs.js')}}"></script>
+
+    <link rel="stylesheet" href="{{asset('assets/css/front_style.css')}}">
+
 
     <!--for private page js and css-->
     @yield('head')
@@ -22,7 +23,17 @@
 
 <div id="main">
 
-    @yield('body-contents')
+    <!--header-->
+    @include('front.layouts.header')
+    <!--end header-->
+
+
+    @yield('contents')
+
+
+    <!--footer-->
+    @include('front.layouts.footer')
+    <!--end footer-->
 
 </div>
 <!-- Optional JavaScript -->
