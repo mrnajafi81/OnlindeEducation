@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\front;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\VerifyNumberRequest;
@@ -17,6 +18,7 @@ class AuthController extends Controller
 {
     public function index()
     {
+        Auth::logout();
         return view('front.auth.form');
     }
 

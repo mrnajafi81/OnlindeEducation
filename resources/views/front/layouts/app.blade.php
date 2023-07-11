@@ -38,7 +38,6 @@
 </div>
 <!-- Optional JavaScript -->
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/js/admin_main.js')}}"></script>
 
 <!--for private page codes-->
 @yield('end-body')

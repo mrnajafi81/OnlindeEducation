@@ -24,12 +24,12 @@ class RoleCheckMiddleware
 
         //check user exist
         if (!$user)
-            return 403;
+            return abort(403);
 
         // check user role
         if (in_array($user->role, $roles))
             return $next($request);
         else
-            return 403;
+            return abort(403);
     }
 }
