@@ -1,13 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\TeachersController;
 use App\Http\Controllers\admin\CoursesController;
+use App\Http\Controllers\admin\GroupsController;
 use App\Http\Controllers\admin\LessonsController;
 use App\Http\Controllers\admin\QuestionsController;
-use App\Http\Controllers\admin\GroupsController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\admin\TeachersController;
+use App\Http\Controllers\front\AuthController;
+use App\Http\Controllers\front\CheckoutController;
+use App\Http\Controllers\front\IndexController;
+use App\Http\Controllers\front\PayController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin.index');
@@ -67,16 +69,22 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::post('login', 'login')->name('login');
 
 
-    Route::get('verify-number','verifyNumberForm')->name('verify-number-form');
-    Route::post('verify-number','verifyNumber')->name('verify-number');
-    Route::post('send-verify-number-again','sendVerifyCodeAgain')->name('send-verify-code-again');
+    Route::get('verify-number', 'verifyNumberForm')->name('verify-number-form');
+    Route::post('verify-number', 'verifyNumber')->name('verify-number');
+    Route::post('send-verify-number-again', 'sendVerifyCodeAgain')->name('send-verify-code-again');
 
     Route::get('/change-captcha', 'changeCaptcha')->name('change_captcha');
 });
 
-Route::controller(IndexController::class)->name('front.')->group(function (){
-    Route::get('/','index')->name('index');
+Route::controller(IndexController::class)->name('front.')->group(function () {
+    Route::get('/', 'index')->name('index');
 
-    Route::get('course/{course}','showCourse')->name('course');
+    Route::get('course/{course}', 'showCourse')->name('course');
+    Route::get('course/lessons/{lesson}', 'showCourseLessons')->name('lessons');
 });
 
+Route::middleware(['auth', 'roleIs:admin,user'])->get('checkout/{course}', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/request/{course}', [PayController::class, 'request'])->name('pay.request');
+Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/verify', [PayController::class, 'verify'])->name('pay.verify');
+Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/{pay}/successful', [PayController::class, 'successful'])->name('pay.successful');
+Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/{pay}/unsuccessful', [PayController::class, 'unsuccessful'])->name('pay.unsuccessful');

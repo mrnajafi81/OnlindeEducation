@@ -84,16 +84,35 @@
                                     <p class="text-muted fw-medium text-nowrap fs-9">{{$currentGroup->ended_at->toJalali()->format('Y/m/d')}}</p>
                                 </div>
 
-                                <a href="#" class="btn btn-primary fw-medium fs-55 w-100 my-2 shadow-sm">
-                                    شرکت در دوره
-                                </a>
-                            @else
-                                <span class="small text-danger d-block mt-2">* در حال حاضر ثبت نامی برای این دوره وجود ندارد.</span>
-                                <button type="button" class="btn btn-secondary fw-medium fs-55 w-100 mb-2 mt-1 shadow-sm" disabled="true">
-                                    شرکت در دوره
-                                </button>
-                            @endif
+                                @if($userHasThisCourse)
+                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first())}}"
+                                       class="btn btn-success fw-medium fs-55 w-100 my-2 shadow-sm">
+                                        مشاهده دروس دوره
+                                    </a>
+                                @else
+                                    <a href="{{route('checkout.index',$course->id)}}"
+                                       class="btn btn-primary fw-medium fs-55 w-100 my-2 shadow-sm">
+                                        شرکت در دوره
+                                    </a>
+                                @endif
 
+                            @else
+
+                                @if($userHasThisCourse)
+                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first())}}"
+                                       class="btn btn-success fw-medium fs-55 w-100 my-2 shadow-sm">
+                                        مشاهده دروس دوره
+                                    </a>
+                                @else
+                                    <span class="small text-danger d-block mt-2">* در حال حاضر ثبت نامی برای این دوره وجود ندارد.</span>
+                                    <button type="button"
+                                            class="btn btn-secondary fw-medium fs-55 w-100 mb-2 mt-1 shadow-sm"
+                                            disabled="true">
+                                        شرکت در دوره
+                                    </button>
+                                @endif
+
+                            @endif
 
                         </div>
                     </div>

@@ -51,12 +51,26 @@
 /*end global class and styles*/
 
 /*header and footer*/
+
+@media screen and (max-width: 572px) {
+    .site-logo{
+        font-size: 2rem !important;
+    }
+}
+
 .btn-hover:hover,#mobile-menu a:hover{
     background-color: var(--main-color) !important;
     color: white !important;
     border-color: var(--main-color);
 }
 /*end header and footer*/
+
+/*lesson page*/
+.sidebar-navigation-box > a.dropdown-toggle:after{
+    border: none !important;
+}
+/*end lesson page*/
+
 
 /*course page style*/
 #course-title{
