@@ -24,6 +24,8 @@
                 </div>
                 <div class="card-body px-0">
 
+                    @include('components.errorsAlert')
+
                     @if($lesson->video)
                         <div class="lesson-video d-flex flex-column align-items-center">
                             <p class="fw-medium">ویدئوی این درس : </p>

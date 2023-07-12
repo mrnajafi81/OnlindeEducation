@@ -7,24 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Lesson extends Model
+class Test extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function course(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function questions(): HasMany
+    public function lesson(): BelongsTo
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(Lesson::class);
     }
 
-    public function tests(): HasMany
+    public function answers(): HasMany
     {
-        return $this->hasMany(Test::class);
+        return $this->hasMany(Answer::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CoursesController;
 use App\Http\Controllers\admin\GroupsController;
 use App\Http\Controllers\admin\LessonsController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\CheckoutController;
 use App\Http\Controllers\front\IndexController;
 use App\Http\Controllers\front\PayController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\front\TestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,12 +80,21 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
 Route::controller(IndexController::class)->name('front.')->group(function () {
     Route::get('/', 'index')->name('index');
 
-    Route::get('course/{course}', 'showCourse')->name('course');
+    Route::get('courses/{course}', 'showCourse')->name('course');
+
     Route::get('course/lessons/{lesson}', 'showCourseLessons')->name('lessons');
 });
+
 
 Route::middleware(['auth', 'roleIs:admin,user'])->get('checkout/{course}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/request/{course}', [PayController::class, 'request'])->name('pay.request');
 Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/verify', [PayController::class, 'verify'])->name('pay.verify');
 Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/{pay}/successful', [PayController::class, 'successful'])->name('pay.successful');
 Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/{pay}/unsuccessful', [PayController::class, 'unsuccessful'])->name('pay.unsuccessful');
+
+
+Route::controller(TestsController::class)->prefix('tests')->name('tests.')->group(function () {
+    Route::get('/{lesson}','index')->name('index');
+    Route::post('/{lesson}','store')->name('store');
+    Route::get('/result/{test}','result')->name('result');
+});
