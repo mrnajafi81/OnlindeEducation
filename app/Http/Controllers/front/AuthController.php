@@ -18,7 +18,6 @@ class AuthController extends Controller
 {
     public function index()
     {
-        Auth::logout();
         return view('front.auth.form');
     }
 

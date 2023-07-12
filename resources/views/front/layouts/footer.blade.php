@@ -1,4 +1,4 @@
-<footer class="pt-5 border-top border-light shadow">
+<footer class="pt-5 border-top border-light shadow bg-white">
     <div class="container border-bottom border-2">
         <div class="row py-3 justify-content-around">
 
