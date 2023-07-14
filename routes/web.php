@@ -11,7 +11,8 @@ use App\Http\Controllers\front\CheckoutController;
 use App\Http\Controllers\front\IndexController;
 use App\Http\Controllers\front\PayController;
 use App\Http\Controllers\front\TestsController;
-use App\Http\Controllers\admin\PaysController;
+use App\Http\Controllers\admin\PaysController as AdminPaysController;
+use App\Http\Controllers\admin\TestsController as AdminTestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,9 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
 
     Route::resource('groups', GroupsController::class)->except('show');
 
-    Route::resource('pays', PaysController::class)->only(['index', 'edit', 'update']);
+    Route::resource('pays', AdminPaysController::class)->only(['index', 'edit', 'update']);
+
+    Route::name('admin')->resource('tests', AdminTestsController::class)->only(['index', 'destroy']);
 
 });
 

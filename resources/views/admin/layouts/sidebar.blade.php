@@ -26,6 +26,10 @@
                 <span class="fa fa-credit-card" style="margin-left: 5px"></span>
                 پرداخت ها
             </a>
+            <a href="{{route('admin.tests.index')}}" class="nav-item nav-link d-block">
+                <span class="fa fa-check-square" style="margin-left: 5px"></span>
+                آزمون ها
+            </a>
             <a href="#" class="nav-item nav-link d-block dropdown-toggle" data-bs-toggle="collapse"
                data-bs-target="#userCollapse" role="button" aria-expanded="false">
                 <span class="fa fa-users" style="margin-left: 5px"></span>
@@ -38,10 +42,6 @@
                     <a href="#" class="nav-link">حذف</a>
                 </nav>
             </div>
-            <a href="#" class="nav-item nav-link d-block">
-                <span class="fa fa-shopping-cart" style="margin-left: 5px"></span>
-                محصولات
-            </a>
         </div>
     </div>
 </nav>
