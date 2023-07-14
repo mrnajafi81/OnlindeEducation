@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('lesson_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedTinyInteger('score');
             $table->boolean('passed');

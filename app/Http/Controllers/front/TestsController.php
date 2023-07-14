@@ -66,6 +66,12 @@ class TestsController extends Controller
 
     public function store(Request $request, Lesson $lesson)
     {
+        //بدست آوردن گروه آموزشی که در حال حاضر فعال است
+        $enableGroupe = $lesson->course->groups()->where('ended_at', '>=', Carbon::now())->first();
+
+        if (!$enableGroupe)
+            return back()->withErrors('در حال حاضر امکان انجام آزمون وجود ندارد.');
+
         //create validation rules
         $rules = [];
         foreach ($lesson->questions as $question) {
@@ -110,6 +116,7 @@ class TestsController extends Controller
         //store test info to database
         $test = Test::create([
             'user_id' => auth()->user()->id,
+            'group_id' => $enableGroupe->id,
             'lesson_id' => $lesson->id,
             'score' => $testFinalScore,
             'passed' => ($testFinalScore >= $lesson->passing_mark),

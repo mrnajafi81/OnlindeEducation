@@ -27,4 +27,9 @@ class Test extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
