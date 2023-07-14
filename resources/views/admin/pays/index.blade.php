@@ -59,7 +59,7 @@
                 </div>
             @else
                 <div class="alert alert-primary fa-8">
-                    <span>هیچ گروهی ثبت نشده است، لطفا یک گروه ایجاد کنید.</span>
+                    <span>هیچ پرداختی ثبت نشده است.</span>
                 </div>
             @endif
         </div>
