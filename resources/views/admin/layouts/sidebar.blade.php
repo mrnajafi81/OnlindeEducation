@@ -22,9 +22,9 @@
                 <span class="fa fa-database" style="margin-left: 5px"></span>
                 گروه ها
             </a>
-            <a href="#" class="nav-item nav-link d-block">
+            <a href="{{route('pays.index')}}" class="nav-item nav-link d-block">
                 <span class="fa fa-credit-card" style="margin-left: 5px"></span>
-                کیف پول
+                پرداخت ها
             </a>
             <a href="#" class="nav-item nav-link d-block dropdown-toggle" data-bs-toggle="collapse"
                data-bs-target="#userCollapse" role="button" aria-expanded="false">

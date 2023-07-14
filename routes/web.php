@@ -11,6 +11,7 @@ use App\Http\Controllers\front\CheckoutController;
 use App\Http\Controllers\front\IndexController;
 use App\Http\Controllers\front\PayController;
 use App\Http\Controllers\front\TestsController;
+use App\Http\Controllers\admin\PaysController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,9 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
     });
 
     Route::resource('groups', GroupsController::class)->except('show');
+
+    Route::resource('pays', PaysController::class)->only(['index', 'edit', 'update']);
+
 });
 
 Route::controller(AuthController::class)->name('auth.')->group(function () {
@@ -94,7 +98,7 @@ Route::middleware(['auth', 'roleIs:admin,user'])->get('pay/{pay}/unsuccessful', 
 
 
 Route::controller(TestsController::class)->prefix('tests')->name('tests.')->group(function () {
-    Route::get('/{lesson}','index')->name('index');
-    Route::post('/{lesson}','store')->name('store');
-    Route::get('/result/{test}','result')->name('result');
+    Route::get('/{lesson}', 'index')->name('index');
+    Route::post('/{lesson}', 'store')->name('store');
+    Route::get('/result/{test}', 'result')->name('result');
 });
