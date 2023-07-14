@@ -17,10 +17,12 @@ class CheckoutController extends Controller
             return redirect(route('front.course', $course->id));
         }
 
-        //چک کرن اینکه از قبل کاربر این آموزش را نخریده باشد.
-        $userHasThisCourse = $course->users()->wherePivot('id',auth()->user()->id)->first();
+        //چک کرن اینکه از قبل کاربر این آموزش را نخریده باشد.اگر خریده بود ریدایرکت به صفحه دوره.
+        $user = auth()->user();
+        $userHasThisCourse = $user->courses()->wherePivot('course_id', $course->id)->first() ? true : false;
+
         if ($userHasThisCourse)
-            return abort(403);
+            return redirect(route('front.course', $course->id));
 
         return view('front.checkout', compact('course', 'enableGroupe'));
     }

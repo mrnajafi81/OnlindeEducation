@@ -27,12 +27,11 @@ class PayController extends Controller
         $user = auth()->user();
 
         //چک کرن اینکه از قبل کاربر این آموزش را نخریده باشد.
-        $userHasThisCourse = $course->users()->wherePivot('id', $user->id)->first();
+        $userHasThisCourse = $user->courses()->wherePivot('course_id', $course->id)->first() ? true : false;
         if ($userHasThisCourse)
-            return abort(403);
+            return redirect(route('front.course', $course->id));
 
-
-        //ارسال اطلاعات پرداخت برای زرین پال
+        //اطلاعات موردنیاز برای ارسال به درگاه
         $MerchantID = $this->MerchantID;
         $Amount = $course->price;
         $Description = "ثبت نام دوره " . $course->title . " گروه آموزشی " . $enableGroupe->title;
@@ -42,6 +41,7 @@ class PayController extends Controller
         $SandBox = true;
         $ZarinGate = false;
 
+        //ارسال اطلاعات پرداخت برای زرین پال و دریافت نتیجه
         $zarinpal = new Zarinpal();
         $result = $zarinpal->request($MerchantID, $Amount, $Description, $Email, $Mobile, $CallbackURL, $SandBox, $ZarinGate);
 
@@ -57,7 +57,7 @@ class PayController extends Controller
                 'authority' => $result['Authority'],
             ]);
 
-            //redirect to pay
+            //redirect to gateway
             $zarinpal->redirect($result["StartPay"]);
 
         } else {
@@ -75,12 +75,12 @@ class PayController extends Controller
         if (isset($_GET['Authority']) && $_GET['Authority'] != "")
             $Authority = $_GET['Authority'];
         else
-            return abort(404);
+            abort(404);
 
         //دریافت اطلاعات پرداخت از دیتابیس به کمک آتوریتی یونیک برگشتی از زرین پال
         $pay = Pay::where('authority', $Authority)->first();
         if (!$pay)
-            return abort(404);
+            abort(404);
 
         //ارسال درخواست اعتبار سنجی (وریفای) پرداخت به زرین پال
         $MerchantID = $this->MerchantID;
@@ -103,7 +103,7 @@ class PayController extends Controller
                 'ref_id' => $result["RefID"],
             ]);
 
-            //store course for user
+            //store course for user (register user for this course)
             auth()->user()->courses()->attach($pay->course_id, [
                 'group_id' => $pay->group_id,
                 'pay_id' => $pay->id,
