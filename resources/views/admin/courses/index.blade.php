@@ -44,8 +44,12 @@
                                     <span class="small">تومان</span>
                                 </td>
                                 <td>{{$course->support_number}}</td>
-                                <td><a href="{{url($course->slug)}}" class="btn btn-sm btn-light rounded-0 fw-normal">کپی
-                                        کردن</a></td>
+                                <td>
+                                    <button data-clipboard-text="{{route('front.course',$course->id)}}"
+                                            class="btn-slug btn btn-sm btn-light rounded-0 fw-normal">
+                                        کپی کردن
+                                    </button>
+                                </td>
                                 <td nowrap>{{$course->type}}</td>
                                 <td nowrap>{{$course->duration}}</td>
                                 <td nowrap>
@@ -53,9 +57,9 @@
                                        class="btn btn-sm btn-primary"><small>ویرایش درس ها</small></a>
                                 </td>
                                 <td nowrap>
-                                    <a href="{{route('courses.show',$course->id)}}"
+                                    <a href="{{route('front.course',$course->id)}}" target="_blank"
                                        class="btn btn-sm btn-info"><small><i
-                                                    class="text-light fs-9 fa fa-eye"></i></small></a>
+                                                class="text-light fs-9 fa fa-eye"></i></small></a>
                                     <a href="{{route('courses.edit',$course->id)}}"
                                        class="btn btn-sm btn-warning"><small><i class="text-light fa fa-pencil-alt"></i></small></a>
                                     <form class="d-inline-block" action="{{route('courses.destroy',$course->id)}}"
@@ -81,5 +85,19 @@
             @endif
         </div>
     </div>
+@endsection
+
+@section('end-body')
+    <script src="{{asset('assets/js/clipboard.min.js')}}"></script>
+
+    <script>
+        let clipboard = new ClipboardJS('.btn-slug');
+
+        clipboard.on('success', function (e) {
+            alert('کپی شد');
+            e.clearSelection();
+        });
+
+    </script>
 @endsection
 

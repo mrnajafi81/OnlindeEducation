@@ -31,7 +31,7 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
     })->name('admin.index');
 
     Route::resource('teachers', TeachersController::class)->except('show');
-    Route::resource('courses', CoursesController::class);
+    Route::resource('courses', CoursesController::class)->except('show');
 
     Route::controller(LessonsController::class)->name('lessons.')->group(function () {
         // this rote that need to know course id
