@@ -84,7 +84,7 @@
                             <div class="mb-4">
                                 <label class="form-label">تکرار رمز عبور :</label>
                                 <input
-                                    class="form-control border-color-main @error('password_confirmation') is-invalid @enderror"
+                                    class="form-control border-color-main @error('password') is-invalid @enderror"
                                     type="password" name="password_confirmation"
                                     placeholder="تکرار رمز عبور را وارد کنید">
                             </div>
