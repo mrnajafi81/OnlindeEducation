@@ -71,7 +71,7 @@
                         <select name="teacher_id" class="form-select">
                             @foreach($teachers as $teacher)
                                 <option
-                                    value="{{$teacher->id}}" {{$course->id == $teacher->id ? 'selected' : ''}}>{{$teacher->name}}</option>
+                                    value="{{$teacher->id}}" {{$course->teacher->id == $teacher->id ? 'selected' : ''}}>{{$teacher->name}}</option>
                             @endforeach
                         </select>
                     </div>
