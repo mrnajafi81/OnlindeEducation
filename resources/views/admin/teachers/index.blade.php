@@ -35,14 +35,14 @@
                                 <td style="min-width: 200px !important;">{{$teacher->about}}</td>
                                 <td nowrap>
                                     <a href="{{route('teachers.edit',$teacher->id)}}"
-                                       class="btn btn-sm btn-warning"><small>ویرایش</small></a>
+                                       class="btn btn-sm btn-warning"><small><i class="text-light fa fa-pencil-alt"></i></small></a>
                                     <form class="d-inline-block" action="{{route('teachers.destroy',$teacher->id)}}"
                                           method="post">
                                         <div class="form-group">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-danger" type="submit">
-                                                <small>حذف</small>
+                                                <small><i class="fa fa-trash-alt fa-sm"></i></small>
                                             </button>
                                         </div>
                                     </form>

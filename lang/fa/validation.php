@@ -218,6 +218,7 @@ return [
         'support_number' => 'شماره پشتیبانی',
         'description' => 'توضیحات',
         'image' => 'تصویر',
+        'about' => 'درباره',
     ],
 
 ];
