@@ -119,6 +119,10 @@ class CoursesController extends Controller
         if ($course->lessons->count())
             return back()->withErrors('برای حذف دوره اول باید تمام درس های آنرا حذف کنید.');
 
+        //حذف تصویر دوره
+        Storage::delete($course->image);
+
+        //حذف ریکورد دوره
         $course->delete();
 
         return back()->with('warning', 'دوره با موفقیت حذف شد');
