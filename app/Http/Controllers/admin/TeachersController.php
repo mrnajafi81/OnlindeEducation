@@ -62,7 +62,7 @@ class TeachersController extends Controller
         ]);
 
         //if selected new image
-        if ($request->has('image')) {
+        if ($request->image) {
             //delete previous image
             Storage::delete($teacher->image);
 
