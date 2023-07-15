@@ -13,6 +13,7 @@ use App\Http\Controllers\front\PayController;
 use App\Http\Controllers\front\TestsController;
 use App\Http\Controllers\admin\PaysController as AdminPaysController;
 use App\Http\Controllers\admin\TestsController as AdminTestsController;
+use App\Http\Controllers\admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,8 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
     Route::resource('pays', AdminPaysController::class)->only(['index', 'edit', 'update']);
 
     Route::name('admin')->resource('tests', AdminTestsController::class)->only(['index', 'destroy']);
+
+    Route::resource('users', UsersController::class)->except(['show','delete']);
 
 });
 
