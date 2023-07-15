@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<nav id="sidebar" style="min-height: calc(100vh - 60px) !important;">
     <div class="navbar">
         <div class="navbar-nav flex-column sidebar-navigation-box align-items-start">
             <a href="{{route('admin.index')}}" class="nav-item nav-link active d-block">
