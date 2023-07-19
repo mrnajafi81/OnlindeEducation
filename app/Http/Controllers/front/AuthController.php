@@ -161,7 +161,12 @@ class AuthController extends Controller
             'sendTime' => Carbon::now()->timestamp,
         ]);
 
-        return MeliPayamak::sendVerifyCode($number, $verifyCode);
+        try {
+            return MeliPayamak::sendVerifyCode($number, $verifyCode);
+        } catch (\Exception $e) {
+            return false;
+        }
+
     }
 
     private function validationCaptcha(Request $request)
