@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
@@ -67,6 +68,46 @@ class AuthController extends Controller
         //send verify code
         $sendResutl = $this->generateAndSendVerifyCode($request->number);
 
+        //تنظیم یک سشن برای اینکه در صفحه وریفای شماره بفهمیم برای ثبت نام است یا بازیابی رمز عبور
+        session()->put('authType', 'register');
+
+        if ($sendResutl) {
+            //verify code sent
+            //سشن یکبار مصرف verify-send برای این ارسال می شود که اگر صفحه رفرش شد تایمر رفرش نشود
+            return redirect(route('auth.verify-number-form'))->with('verify-send', true);
+        } else {
+            //verify code not be sent
+            return back()->withErrors("مشکلی رخ داده است. لطفا بعدا دوباره امتحان کنید.");
+        }
+
+    }
+
+    public function forgetPasswordForm()
+    {
+        return view('front.auth.forget_password');
+    }
+
+    public function forgetPassword(Request $request)
+    {
+        //validation request
+        $request->validate([
+            'number' => ['required', 'numeric', 'digits:11'],
+        ]);
+
+        //find user with entered number
+        $user = User::where('number', $request->number)->first();
+        if (!$user)
+            return back()->withErrors('کاربری با شماره وارد شده یافت نشد.');
+
+        //send verify code
+        $sendResutl = $this->generateAndSendVerifyCode($request->number);
+
+        //تنظیم یک سشن برای اینکه در صفحه وریفای شماره بفهمیم برای ثبت نام است یا بازیابی رمز عبور
+        session()->put('authType', 'forgetPassword');
+
+        // store user number in session for verifyNumberForm
+        session()->put('user', ['number' => $user->number]);
+
         if ($sendResutl) {
             //verify code sent
             //سشن یکبار مصرف verify-send برای این ارسال می شود که اگر صفحه رفرش شد تایمر رفرش نشود
@@ -92,7 +133,9 @@ class AuthController extends Controller
         }
 
         // get verify code info
-        $verify = session()->get('verify');
+        $verify = session()->pull('verify');
+        if (!$verify)
+            return redirect(route('auth.index'));
 
         //چک کردن تاریخ انقضای وریفای کد
         $now = Carbon::now()->timestamp;
@@ -106,9 +149,24 @@ class AuthController extends Controller
             return back()->withErrors('کد اعتبار سنجی وارد شده اشتباه است.');
         }
 
-        //حذف سشن کد اعتبار سنجی
-        session()->pull('verify');
+        //گرفتن اطلاعات سشن authAction برای فهمیدن اینکه باید ثبت نام انجام شود یا بازیابی رمز عبور
+        $authType = session()->get('authType');
+        if (!$authType || !(in_array($authType, ['register', 'forgetPassword'])))
+            return redirect(route('auth.index'));
 
+        if ($authType == 'register')
+            return $this->doRegister();
+
+        if ($authType == 'forgetPassword') {
+            session()->put('verifyNumberTime', Carbon::now()->timestamp);
+            return redirect(route('auth.change-password-form'));
+        }
+
+
+    }
+
+    public function doRegister()
+    {
         //گرفتن اطلاعات سشن کاربر که در pre-register ست شده بود.
         $userInfo = session()->pull('user');
 
@@ -124,6 +182,46 @@ class AuthController extends Controller
 
         //TODO: redirect user when registered
         return redirect(route('front.index'))->with('success', 'ثبت نام شما با موفقیت انجام شد.');
+    }
+
+    public function changePasswordForm()
+    {
+        //چک کردن اینکه کاربر حتما شماره خود را وریفای کرده باشد
+        $verifyNumberTime = session()->get('verifyNumberTime');
+        $now = Carbon::now()->timestamp;
+        if (!$verifyNumberTime || ($now - $verifyNumberTime > (5 * 60)))
+            return redirect(route('auth.forget-password-form'))->withErrors('لطفا اول شماره تلفن همراه خود را اعتبار سنجی کنید.');
+
+        return view('front.auth.change_password');
+    }
+
+    public function changePassword(Request $request)
+    {
+        //validation request
+        $request->validate([
+            'password' => ['required', 'min:8', 'confirmed', Password::min(8)->letters()->numbers()],
+        ]);
+
+        //get user number from session
+        $number = session()->pull('user')['number'];
+        if (!$number)
+            return redirect(route('auth.forget-password-form'))->withErrors('لطفا اول شماره تلفن همراه خود را اعتبار سنجی کنید.');
+
+        // get user from database
+        $user = User::where('number', $number)->first();
+        if (!$user)
+            abort(404);
+
+
+        //changer user password
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        //حذف سشن وریفای تلفن
+        session()->forget('verifyNumberTime');
+
+        //سشن لاگین برای این است که در صفحه auth تب مربوط به لاگین فعال شود
+        return redirect(route('auth.index'))->with(['login' => true, 'success' => 'پسورد شما با موفقیت تغییر کرد']);
     }
 
     public function sendVerifyCodeAgain(Request $request)

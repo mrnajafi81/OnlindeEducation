@@ -54,7 +54,7 @@
                             <h1 class="h4 fw-bold text-muted">ثبت نام در سامانه امامت</h1>
                         </div>
 
-                        @include('components.errorsAlert')
+                        @include('components.allAlerts')
 
                         <form action="{{route('auth.pre-register')}}" method="POST">
 
@@ -108,7 +108,7 @@
                             <h1 class="h4 fw-bold text-muted">ورود به سامانه امامت</h1>
                         </div>
 
-                        @include('components.errorsAlert')
+                        @include('components.allAlerts')
 
                         <form action="{{route('auth.login')}}" method="POST">
 
@@ -151,11 +151,16 @@
                                 </label>
                             </div>
 
+                            <div class="mb-3">
+                                <a href="{{route('auth.forget-password-form')}}" class="fs-9 text-muted text-decoration-none">رمز عبور خود را فراموش کرده اید؟</a>
+                            </div>
+
                             <div class="form-group mb-3">
                                 <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100">
                                     ورود
                                 </button>
                             </div>
+
 
                         </form>
                     </div>

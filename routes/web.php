@@ -70,7 +70,7 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
 
     Route::name('admin')->resource('tests', AdminTestsController::class)->only(['index', 'destroy']);
 
-    Route::resource('users', UsersController::class)->except(['show','delete']);
+    Route::resource('users', UsersController::class)->except(['show', 'delete']);
 
 });
 
@@ -79,6 +79,10 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
     Route::post('pre-register', 'preRegister')->name('pre-register');
     Route::post('login', 'login')->name('login');
 
+    Route::get('forget-password', 'forgetPasswordForm')->name('forget-password-form');
+    Route::post('forget-password', 'forgetPassword')->name('forget-password');
+    Route::get('change-password', 'changePasswordForm')->name('change-password-form');
+    Route::post('change-password', 'changePassword')->name('change-password');
 
     Route::get('verify-number', 'verifyNumberForm')->name('verify-number-form');
     Route::post('verify-number', 'verifyNumber')->name('verify-number');
