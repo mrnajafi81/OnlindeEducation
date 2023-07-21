@@ -9,8 +9,8 @@ class MeliPayamak
 {
     public static function sendVerifyCode(string $number, string $code)
     {
-        $result = Http::post('https://console.melipayamak.com/api/send/shared/dd75187b886d4c4a98731fc639b28965', [
-            'bodyId' => 148938,
+        $result = Http::post('https://console.melipayamak.com/api/send/shared/2fdb64a3c3834900adef068d3b6ab80a', [
+            'bodyId' => 151677,
             'to' => $number,
             'args' => [$code]
         ])->json();
