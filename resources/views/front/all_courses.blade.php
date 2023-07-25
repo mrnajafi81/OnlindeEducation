@@ -1,12 +1,19 @@
 @extends('front.layouts.app')
 
-@section('title','سامانه آموزش مجازی امامت')
+@section('title','سامانه آموزش مجازی امامت_همه دوره ها')
 
 @section('contents')
 
-    <section id="main-content" class="container my-5">
-        <h1 class="h5 fw-bold border-bottom border-3 border-color-main pb-2">جدیدترین دوره ها</h1>
+    <section class="container mb-5">
 
+        <!--page title-->
+        <div id="course-title"
+             class="shadow-sm d-flex align-items-center bg-white border border-success-subtle rounded-1 my-5 mb-3">
+            <h1 class="fw-medium fs-3 border-start border-5 ps-2 ms-3 py-1 border-color-main">همه دوره ها</h1>
+        </div>
+        <!--end page title-->
+
+        <!--courses-->
         <div class="row">
 
             @foreach($courses as $course)
@@ -47,6 +54,7 @@
             @endforeach
 
         </div>
+        <!--end courses-->
 
     </section>
 

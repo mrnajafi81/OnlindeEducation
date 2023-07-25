@@ -12,7 +12,14 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('front.home');
+        $courses = Course::orderBy('id', 'desc')->limit(4)->get();
+        return view('front.home')->with(['courses' => $courses]);
+    }
+
+    public function allCourses()
+    {
+        $courses = Course::orderBy('id', 'desc')->limit(12)->get();
+        return view('front.all_courses')->with('courses', $courses);
     }
 
     public function showCourse(Course $course)

@@ -94,6 +94,8 @@ Route::controller(AuthController::class)->name('auth.')->group(function () {
 Route::controller(IndexController::class)->name('front.')->group(function () {
     Route::get('/', 'index')->name('index');
 
+    Route::get('/all-courses', 'allCourses')->name('all-courses');
+
     Route::get('courses/{course}', 'showCourse')->name('course');
 
     Route::get('course/lessons/{lesson}', 'showCourseLessons')->name('lessons');

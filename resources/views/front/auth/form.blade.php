@@ -7,6 +7,19 @@
         #pills-tab {
             gap: 10px !important;
         }
+
+        button.active{
+            background-color: var(--main-color) !important;
+            color: white;
+        }
+
+        button[role='tab']{
+            color: var(--main-color);
+        }
+
+        button[role='tab']:hover:not(.active){
+            color: var(--main-color) !important;
+        }
     </style>
 @endsection
 
@@ -90,7 +103,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100">
+                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100 main-hover">
                                     ثبت نام
                                 </button>
                             </div>
@@ -156,7 +169,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100">
+                                <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100 main-hover">
                                     ورود
                                 </button>
                             </div>

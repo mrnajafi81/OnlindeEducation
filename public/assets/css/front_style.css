@@ -5,18 +5,18 @@
 }
 
 :root {
-    --main-color: #26967f;
+    --main-color: #208a75;
 }
 
-.text-color-main{
+.text-color-main {
     color: var(--main-color) !important;
 }
 
-.bg-color-main{
+.bg-color-main {
     background-color: var(--main-color) !important;
 }
 
-.border-color-main{
+.border-color-main {
     border-color: var(--main-color) !important;
 }
 
@@ -48,37 +48,60 @@
     background: rgba(245, 245, 245, 0.62) !important;
 }
 
+
+button.main-hover:hover {
+    background-color: #115b4b !important;
+    color: white;
+}
+
 /*end global class and styles*/
 
 /*header and footer*/
+#main-menu .nav-link {
+    border-bottom: 3px solid white !important;
+}
+
+#main-menu .nav-link:hover {
+    font-weight: 600;
+    border-bottom: 3px solid var(--main-color) !important;
+}
 
 @media screen and (max-width: 572px) {
-    .site-logo{
+    .site-logo {
         font-size: 2rem !important;
     }
 }
 
-.btn-hover:hover,#mobile-menu a:hover{
+.btn-hover:hover, #mobile-menu a:hover {
     background-color: var(--main-color) !important;
     color: white !important;
     border-color: var(--main-color);
 }
+
 /*end header and footer*/
 
 /*lesson page*/
-.sidebar-navigation-box > a.dropdown-toggle:after{
+.sidebar-navigation-box > a.dropdown-toggle:after {
     border: none !important;
 }
+
 /*end lesson page*/
 
 
 /*course page style*/
-#course-title{
+#course-title {
     min-height: 120px;
 }
 
 #course-info p {
     margin-bottom: 0 !important;
 }
+
 /*end course page style*/
+
+/*home page*/
+.course-item:hover{
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.15) !important
+}
+/*end home page*/
 

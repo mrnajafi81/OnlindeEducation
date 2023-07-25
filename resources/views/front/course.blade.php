@@ -7,36 +7,22 @@
     <section class="container">
 
         <!--course title-->
-        <div id="course-title" class="shadow-sm d-flex align-items-center bg-light rounded-1 my-4">
+        <div id="course-title" class="shadow-sm d-flex align-items-center bg-white border border-success-subtle rounded-1 my-5">
             <h1 class="fw-medium fs-3 border-start border-5 ps-2 ms-3 py-1 border-color-main">{{$course->title}}</h1>
         </div>
         <!--end course title-->
 
         <!--course contents-->
-        <div class="row mt-2 mb-5">
+        <div class="row mb-5 mt-1">
 
-            <div class="col-12 col-lg-8">
+            <!--sidebar-->
+            <div class="col-12 col-lg-4">
 
                 <!--course image-->
                 <img class="shadow-sm w-100 rounded-1" src="{{asset($course->image)}}" alt="{{$course->title}}">
 
-                <!--course description-->
-                <div class="card border-light shadow-sm mt-4">
-                    <div class="card-body">
-                        <p class="card-title fw-medium fs-5 mb-3">
-                            توضیحات دوره
-                        </p>
-                        <p class="text-start py-2 rounded-1 mb-0">{{$course->description}}</p>
-                    </div>
-                </div>
-                <!--end course description-->
-
-            </div>
-
-            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
-
                 <!--course info-->
-                <div id="course-info" class="card border-light shadow-sm mt-4 mt-lg-0">
+                <div id="course-info" class="card border-success-subtle shadow-sm mt-3">
                     <div class="card-body">
                         <p class="card-title fw-medium fs-5 pb-3">
                             مشخصات دوره
@@ -47,7 +33,7 @@
                                 class="bg-light py-2 px-3 rounded-1 d-flex justify-content-between flex-nowrap align-items-center py-3">
                                 <p class="fw-medium text-nowrap">قیمت دوره : </p>
                                 <p class="text-muted fw-medium text-nowrap">
-                                    <span>{{$course->price}}</span>
+                                    <span>{{number_format($course->price)}}</span>
                                     <span class="fs-9">تومان</span>
                                 </p>
                             </div>
@@ -56,13 +42,17 @@
                             <div
                                 class="bg-light py-2 px-3 rounded-1 d-flex justify-content-between flex-nowrap align-items-center py-3">
                                 <p class="fw-medium text-nowrap">مدت زمان : </p>
-                                <p class="text-muted fw-medium text-nowrap fs-9">{{$course->duration}}</p>
+                                <p class="text-muted fw-medium text-nowrap fs-9">
+                                    <span>{{$course->duration}}</span>
+                                    <span>ساعت</span>
+                                </p>
                             </div>
 
                             <div
                                 class="bg-light py-2 px-3 rounded-1 d-flex justify-content-between flex-nowrap align-items-center py-3">
                                 <p class="fw-medium text-nowrap">تعداد درس : </p>
-                                <p class="text-muted fw-medium text-nowrap fs-9">{{$course->lessons->count()}} درس</p>
+                                <p class="text-muted fw-medium text-nowrap fs-9">{{$course->lessons->count()}}
+                                    درس</p>
                             </div>
 
                             <div
@@ -119,8 +109,9 @@
                 </div>
                 <!--end course info-->
 
+
                 <!--course teacher-->
-                <div class="card border-light shadow-sm mt-4">
+                <div class="card border-success-subtle shadow-sm mt-3">
                     <div class="card-body">
                         <p class="card-title fw-medium fs-5 mb-2 text-center">
                             مدرس دوره
@@ -140,6 +131,42 @@
                 <!--end course teacher-->
 
             </div>
+            <!--end sidebar-->
+
+            <!--main contents-->
+            <div class="col-12 col-lg-8 mt-4 mt-lg-0">
+
+                <!--course description-->
+                <div class="card border-success-subtle shadow-sm">
+                    <div class="card-body">
+                        <p class="card-title fw-medium fs-5 mb-3">
+                            توضیحات دوره
+                        </p>
+                        <p class="text-start py-2 rounded-1 mb-0">{{$course->description}}</p>
+                    </div>
+                </div>
+                <!--end course description-->
+
+                <!--course lessons-->
+                <div class="card border-success-subtle shadow-sm mt-4">
+                    <div class="card-body">
+                        <p class="card-title fw-medium fs-5 mb-4">
+                            درس های دوره
+                        </p>
+                        <div class="d-flex flex-column align-items-start">
+                            @foreach($course->lessons()->orderBy('order')->get() as $lesson)
+                                <p class="text-start mb-3 d-flex align-items-center gap-2 border-bottom border-color-main border-3">
+                                    <i class="fa fa-list-alt text-success"></i>
+                                    <span class="text-muted mb-1 fw-medium">{{$lesson->title}}</span>
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <!--end course lessons-->
+
+            </div>
+            <!--end main contents-->
 
 
         </div>
