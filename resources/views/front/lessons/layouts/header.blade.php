@@ -1,4 +1,4 @@
-<header class="p-0 m-0 py-2 shadow-sm border-bottom border-light h-auto">
+<header class="p-0 m-0 py-2 shadow-sm border-bottom border-light h-auto bg-white">
     <div class="my-1 d-flex justify-content-center container align-items-center flex-wrap justify-content-sm-between flex-column flex-sm-row gap-3 gap-sm-0">
 
         <!--logo-->
