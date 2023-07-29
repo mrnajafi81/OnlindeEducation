@@ -40,7 +40,7 @@
                                 <td>{{$course->title}}</td>
                                 <td>{{$course->teacher->name}}</td>
                                 <td class="text-nowrap">
-                                    <span>{{$course->price}}</span>
+                                    <span>{{number_format($course->price)}}</span>
                                     <span class="small">تومان</span>
                                 </td>
                                 <td>{{$course->support_number}}</td>

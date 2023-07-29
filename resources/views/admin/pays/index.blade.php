@@ -38,7 +38,7 @@
                                 <td>{{$pay->user->fullname}}</td>
                                 <td>{{\Illuminate\Support\Str::limit($pay->course->title,30)}}</td>
                                 <td>{{\Illuminate\Support\Str::limit($pay->group->title,30)}}</td>
-                                <td>{{$pay->price}}</td>
+                                <td>{{number_format($pay->price)}}</td>
                                 <td>
                                     @if($pay->status)
                                         <span class="fs-9 text-success">پرداخت موفق</span>

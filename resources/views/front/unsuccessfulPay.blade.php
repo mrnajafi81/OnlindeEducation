@@ -23,7 +23,7 @@
                     <div class="mb-3 mt-5 d-flex flex-column align-items-center">
                         <p>
                             <span class="fw-medium">مبلغ قابل پرداخت :</span>
-                            <span class="fw-medium text-muted">{{$pay->course->price}}</span>
+                            <span class="fw-medium text-muted">{{number_format($pay->course->price)}}</span>
                             <span class="fw-medium fs-9 text-muted">تومان</span>
                         </p>
 

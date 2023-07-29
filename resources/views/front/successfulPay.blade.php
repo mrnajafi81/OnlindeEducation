@@ -23,11 +23,20 @@
                     <div class="mb-3 mt-5 d-flex flex-column align-items-center">
                         <p>
                             <span class="fw-medium">مبلغ پرداخت شده :</span>
-                            <span class="fw-medium text-muted">{{$pay->course->price}}</span>
+                            <span class="fw-medium text-muted">{{number_format($pay->course->price)}}</span>
                             <span class="fw-medium fs-9 text-muted">تومان</span>
                         </p>
+                        <p>
+                            <span class="fw-medium">شماره پیگیری تراکنش :</span>
+                            <span class="fw-medium text-muted">{{$pay->ref_id}}</span>
+                        </p>
+                        <p>
+                            <span class="fw-medium">زمان پرداخت :</span>
+                            <span class="fw-medium text-muted">{{$pay->created_at->toJalali()->format('H:i Y/m/d')}}</span>
+                        </p>
 
-                        <a href="{{route('front.course',$pay->course->id)}}" type="submit" class="btn btn-primary d-block w-75 fw-medium fs-55">
+                        <a href="{{route('front.course',$pay->course->id)}}" type="submit"
+                           class="btn btn-primary d-block w-75 fw-medium fs-55">
                             برگشت به دوره
                         </a>
                     </div>
