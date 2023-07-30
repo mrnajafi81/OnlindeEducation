@@ -56,6 +56,12 @@ class AuthController extends Controller
 
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return redirect(route('front.index'));
+    }
+
     public function preRegister(RegisterRequest $request)
     {
         //store user info in session
