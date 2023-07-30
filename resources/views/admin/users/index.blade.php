@@ -9,6 +9,46 @@
             <a href="{{route('users.create')}}"
                class="btn btn-outline-primary btn-sm float-end"><small>افزودن</small></a>
         </div>
+
+        <div class="card-body">
+            <form class="d-flex flex-wrap align-items-center justify-content-between" action="" id="search-form">
+
+                <div class="search-inputs overflow-x-hidden mb-3 mb-lg-0">
+
+                    <div class="d-inline-block mb-2 text-nowrap">
+                        <span>جستجوی </span>
+                        <div class="form-check-inline me-1">
+                            <input type="text" class="form-control form-control-sm w-md-100" name="search"
+                                   placeholder="کلمه مورد نظر" value="{{request()->query('search')}}">
+                        </div>
+                    </div>
+
+                    <div class="d-inline-block text-nowrap">
+                        <span>در ردیف </span>
+                        <div class="form-check-inline">
+                            <select name="row" class="form-select form-select-sm w-md-100">
+                                <option
+                                    value="user_fullname" {{request()->query('row') == 'user_fullname'? 'selected':''}}>
+                                    نام کاربر
+                                </option>
+                                <option
+                                    value="user_number" {{request()->query('row') == 'user_number'? 'selected':''}}>
+                                    شماره کاربر
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit" id="search" class="btn btn-sm btn-outline-primary" style="width: 100px">
+                    جستجو
+                </button>
+
+
+            </form>
+        </div>
+
         <div class="card-body px-0">
 
             @include('components.allAlerts')

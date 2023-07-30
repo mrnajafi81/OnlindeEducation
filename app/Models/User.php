@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -66,4 +67,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(Test::class);
     }
+
+    public function scopeSearch(Builder $query)
+    {
+        $search = request()->query('search');
+        $row = request()->query('row');
+
+        if ($search && $row) {
+
+            switch ($row) {
+
+                case 'user_fullname':
+                    $query->where('fullname', 'LIKE', "%$search%");
+                    break;
+
+                case 'user_number':
+                    $query->where('number', 'LIKE', "%$search%");
+                    break;
+
+            }
+
+
+        }
+
+    }
+
+
 }
