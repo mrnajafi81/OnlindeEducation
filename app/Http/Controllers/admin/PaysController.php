@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdatePayRequest;
 use App\Models\Pay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaysController extends Controller
 {
@@ -14,7 +15,12 @@ class PaysController extends Controller
      */
     public function index()
     {
-        $pays = Pay::orderBy('id', 'desc')->get();
+        $pays = Pay::join('users', 'pays.user_id', '=', 'users.id')
+            ->join('courses', 'pays.course_id', '=', 'courses.id')
+            ->join('groups', 'pays.group_id', '=', 'groups.id')
+            ->select('pays.*', 'users.fullname', 'users.number', 'courses.title', 'groups.title')
+            ->search()->orderBy('id','desc')->get();
+
         return view('admin.pays.index')->with('pays', $pays);
     }
 
