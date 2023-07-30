@@ -4,7 +4,48 @@
 
 @section('contents')
 
-    <section id="main-content" class="container my-5">
+    <section id="main-content" class="container mb-5">
+
+        <!--slider-->
+        <div class="mt-4 mb-5 row justify-content-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                <div id="main-carousel" class="carousel slide rounded-3 overflow-hidden h-100 shadow-sm">
+
+                    <div class="carousel-indicators">
+                        @foreach($sliders as $key => $slider)
+                            <button type="button" data-bs-target="#main-carousel" data-bs-slide-to="{{$key}}"
+                                    class="{{$loop->first ? 'active' : ''}}"
+                                    aria-current="{$loop->first ? 'active' : 'false'}}"
+                                    aria-label="Slide {{$key}}"></button>
+                        @endforeach
+                    </div>
+
+                    <div class="carousel-inner ">
+                        @foreach($sliders as $key => $slider)
+                            <div class="carousel-item {{$loop->first ? 'active' : ''}}">
+                                <a href="{{$slider->url}}" class="text-decoration-none m-0 p-0 w-100">
+                                    <img src="{{asset($slider->image)}}" class="d-block w-100 ">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#main-carousel"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#main-carousel"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <!--edn slider-->
+
         <h1 class="h5 fw-bold border-bottom border-3 border-color-main pb-2">جدیدترین دوره ها</h1>
 
         <div class="row">

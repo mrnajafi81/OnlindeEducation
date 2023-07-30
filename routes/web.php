@@ -15,6 +15,7 @@ use App\Http\Controllers\front\TestsController;
 use App\Http\Controllers\admin\PaysController as AdminPaysController;
 use App\Http\Controllers\admin\TestsController as AdminTestsController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\SlidersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,8 @@ Route::prefix('admin')->middleware(['auth', 'roleIs:admin'])->group(function () 
 
     Route::resource('users', UsersController::class)->except(['show', 'delete']);
 
+    Route::resource('sliders', SlidersController::class)->except(['show']);
+
 });
 
 //routes of auth section
@@ -116,6 +119,7 @@ Route::middleware('guest')->controller(AuthController::class)->name('auth.')->gr
     Route::get('/change-captcha', 'changeCaptcha')->name('change_captcha');
 
 });
+Route::middleware('auth')->get('logout', [AuthController::class, 'logout'])->name('auth.logout');//logout TODO: change method to post
 
 //routes of front section
 Route::controller(IndexController::class)->name('front.')->group(function () {
@@ -131,7 +135,7 @@ Route::controller(IndexController::class)->name('front.')->group(function () {
     Route::get('course/lessons/{lesson}', 'showCourseLessons')->name('lessons');
 });
 
-
+//route of checkout, payments, do tests section
 Route::middleware(['auth', 'roleIs:admin,user'])->group(function () {
 
     //checkout page

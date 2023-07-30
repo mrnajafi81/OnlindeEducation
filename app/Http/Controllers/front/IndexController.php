@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Slider;
 use Carbon\Carbon;
 use Illuminate\Http\Response;
 
@@ -13,7 +14,10 @@ class IndexController extends Controller
     public function index()
     {
         $courses = Course::orderBy('id', 'desc')->limit(4)->get();
-        return view('front.home')->with(['courses' => $courses]);
+
+        $sliders = Slider::all();
+
+        return view('front.home')->with(compact('courses', 'sliders'));
     }
 
     public function allCourses()
