@@ -14,7 +14,12 @@ class TestsController extends Controller
      */
     public function index()
     {
-        $tests = Test::orderBy('id', 'desc')->get();
+        $tests = Test::join('users', 'tests.user_id', '=', 'users.id')
+            ->join('groups', 'tests.group_id', '=', 'groups.id')
+            ->join('lessons', 'tests.lesson_id', '=', 'lessons.id')
+            ->select('tests.*', 'users.fullname', 'users.number', 'lessons.title', 'groups.title')
+            ->search()->orderBy('id', 'desc')->get();
+
         return view('admin.tests.index')->with('tests', $tests);
     }
 
@@ -37,7 +42,7 @@ class TestsController extends Controller
         //delete test record
         $test->delete();
 
-        return back()->with('warning','آزمون با موفقیت حذف شد.');
+        return back()->with('warning', 'آزمون با موفقیت حذف شد.');
     }
 
 }
