@@ -31,6 +31,11 @@ body {
     overflow: hidden;
 }
 
+#table_overflow{
+    width: 100%;
+    overflow-x: auto;
+}
+
 /*
     Section: Header
     ========================================
@@ -114,20 +119,29 @@ header {
 
 #content {
     width: 100%;
+    overflow-x: hidden;
 }
 
 #content-header-image {
     height: 250px;
-    background: url("../image/admin/photo25@2x.jpg") no-repeat fixed center center;
-    background-size: cover;
+    background-image: url("../image/admin/emamat.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
     position: relative;
+}
+
+@media screen and (max-width: 768px){
+    #content-header-image {
+        background-size: auto 100%;
+    }
 }
 
 #content-header-image:before {
     content: '';
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.35);
     position: absolute;
     top: 0;
     left: 0;
@@ -293,6 +307,12 @@ fs-9 {
 
 .fs-60{
     font-size: 60% !important;
+}
+
+@media screen and (max-width: 768px){
+    .w-md-100{
+        width: 100% !important;
+    }
 }
 
 @media screen and (max-width: 492px){
