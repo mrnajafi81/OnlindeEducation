@@ -40,7 +40,7 @@ class SlidersController extends Controller
         //store slider info to database
         Slider::create([
             "url" => $request->input('url') ?? '#',
-            "image" => $request->file('image')->store('images/sliders'),
+            "image" => 'storage/' . $request->file('image')->store('images/sliders'),
         ]);
 
         return redirect(route('sliders.index'))->with('success', 'اسلاید با موفقیت اضافه شد');
@@ -73,10 +73,10 @@ class SlidersController extends Controller
 
         if ($request->image) {
             //delete previous image
-            Storage::delete($slider->image);
+            Storage::delete($this->deleteStorageWordFromStr($slider->image));
 
             //store new image
-            $slider->image = $request->file('image')->store('images/sliders');
+            $slider->image = 'storage/' . $request->file('image')->store('images/sliders');
             $slider->save();
         }
 
@@ -89,7 +89,7 @@ class SlidersController extends Controller
     public function destroy(Slider $slider)
     {
         //delete image
-        Storage::delete($slider->image);
+        Storage::delete($this->deleteStorageWordFromStr($slider->image));
 
         $slider->delete();
 

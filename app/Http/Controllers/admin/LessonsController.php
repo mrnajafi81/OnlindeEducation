@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Course;
 use App\Models\Lesson;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class LessonsController extends Controller
@@ -42,39 +43,46 @@ class LessonsController extends Controller
             return back()->withErrors(['order' => 'درسی با این ترتیب از قبل وجود دارد']);
         }
 
-        DB::beginTransaction();
+        try {
 
-        //store lesson
-        $lesson = Lesson::create([
-            'course_id' => $course->id,
-            'title' => $request->title,
-            'order' => $request->order,
-            'has_test' => $request->has_test,
-            'passing_mark' => $request->has_test ? $request->passing_mark : 0,
-        ]);
+            DB::beginTransaction();
 
-        //upload video if exist
-        if ($request->video) {
-            $lesson->update([
-                'video' => $request->file('video')->store('videos'),
+            //store lesson
+            $lesson = Lesson::create([
+                'course_id' => $course->id,
+                'title' => $request->title,
+                'order' => $request->order,
+                'has_test' => $request->has_test,
+                'passing_mark' => $request->has_test ? $request->passing_mark : 0,
             ]);
-        }
 
-        //upload sound if exist
-        if ($request->sound) {
-            $lesson->update([
-                'sound' => $request->file('sound')->store('sounds'),
-            ]);
-        }
+            //upload video if exist
+            if ($request->video) {
+                $lesson->update([
+                    'video' => 'storage/' . $request->file('video')->store('videos'),
+                ]);
+            }
 
-        //upload file if exist
-        if ($request->file) {
-            $lesson->update([
-                'file' => $request->file('file')->store('files'),
-            ]);
-        }
+            //upload sound if exist
+            if ($request->sound) {
+                $lesson->update([
+                    'sound' => 'storage/' . $request->file('sound')->store('sounds'),
+                ]);
+            }
 
-        DB::commit();
+            //upload file if exist
+            if ($request->file) {
+                $lesson->update([
+                    'file' => 'storage/' . $request->file('file')->store('files'),
+                ]);
+            }
+
+            DB::commit();
+
+        } catch (\Throwable $exception) {
+            DB::rollBack();
+            report($exception);
+        }
 
         return redirect(route('lessons.index', $course->id))->with('success', 'درس با موفقیت اضافه شد');
     }
@@ -137,13 +145,13 @@ class LessonsController extends Controller
 
         //delete lesson media
         if ($lesson->video)
-            Storage::delete($lesson->video);
+            Storage::delete($this->deleteStorageWordFromStr($lesson->video));
 
         if ($lesson->sound)
-            Storage::delete($lesson->sound);
+            Storage::delete($this->deleteStorageWordFromStr($lesson->sound));
 
         if ($lesson->file)
-            Storage::delete($lesson->file);
+            Storage::delete($this->deleteStorageWordFromStr($lesson->file));
 
         //delete lesson
         $lesson->delete();
@@ -162,7 +170,7 @@ class LessonsController extends Controller
         //video change section code
         if ($request->{$tag}) {
             //null the field of this lesson
-            Storage::delete($lesson->{$field});
+            Storage::delete($this->deleteStorageWordFromStr($lesson->{$field}));
             $lesson->update([
                 $field => '',
             ]);
@@ -171,12 +179,12 @@ class LessonsController extends Controller
 
             //delete previous video if exist
             if ($lesson->{$field}) {
-                Storage::delete($lesson->{$field});
+                Storage::delete($this->deleteStorageWordFromStr($lesson->{$field}));
             }
 
             //upload and store new field
             $lesson->update([
-                $field => $request->file($field)->store($field . 's'),
+                $field => 'storage/' . $request->file($field)->store($field . 's'),
             ]);
 
         }

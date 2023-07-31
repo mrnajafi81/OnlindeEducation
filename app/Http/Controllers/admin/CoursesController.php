@@ -50,7 +50,7 @@ class CoursesController extends Controller
             'teacher_id' => $teacher->id,
             'support_number' => $request->support_number,
             'description' => $request->description,
-            'image' => $request->file('image')->store('images/courses'),
+            'image' => 'storage/' . $request->file('image')->store('images/courses'),
         ]);
 
         return redirect(route('courses.index'))->with('success', 'دوره با موفقیت اضافه شد');
@@ -100,10 +100,10 @@ class CoursesController extends Controller
         //if selected new image
         if ($request->image) {
             //delete previous image
-            Storage::delete($course->image);
+            Storage::delete($this->deleteStorageWordFromStr($course->image));
 
             //upload new image
-            $course->image = $request->file('image')->store('images/courses');
+            $course->image = 'storage/' . $request->file('image')->store('images/courses');
             $course->save();
         }
 
@@ -120,7 +120,7 @@ class CoursesController extends Controller
             return back()->withErrors('برای حذف دوره اول باید تمام درس های آنرا حذف کنید.');
 
         //حذف تصویر دوره
-        Storage::delete($course->image);
+        Storage::delete($this->deleteStorageWordFromStr($course->image));
 
         //حذف ریکورد دوره
         $course->delete();

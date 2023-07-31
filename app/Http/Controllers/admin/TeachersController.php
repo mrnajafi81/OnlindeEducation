@@ -36,7 +36,7 @@ class TeachersController extends Controller
         Teacher::create([
             "name" => $request->name,
             "about" => $request->about,
-            "image" => $request->file('image')->store('images/teachers'),
+            "image" => 'storage/' . $request->file('image')->store('images/teachers'),
         ]);
 
         return redirect(route('teachers.index'))->with('success', 'استاد با موفقیت اضافه شد');
@@ -64,10 +64,10 @@ class TeachersController extends Controller
         //if selected new image
         if ($request->image) {
             //delete previous image
-            Storage::delete($teacher->image);
+            Storage::delete($this->deleteStorageWordFromStr($teacher->image));
 
             //upload new image
-            $teacher->image = $request->file('image')->store('images/teachers');
+            $teacher->image = 'storage/' . $request->file('image')->store('images/teachers');
             $teacher->save();
         }
 
@@ -84,11 +84,11 @@ class TeachersController extends Controller
             return back()->withErrors('برای حذف این استاد اول دوره های مربوط به این استاد را حذف کنید.');
 
         //delete teacher image
-        Storage::delete($teacher->image);
+        Storage::delete($this->deleteStorageWordFromStr($teacher->image));
 
         //delete teacher recorde
         $teacher->delete();
 
-        return back()->with('warning','استاد با موفقیت حذف شد');
+        return back()->with('warning', 'استاد با موفقیت حذف شد');
     }
 }
