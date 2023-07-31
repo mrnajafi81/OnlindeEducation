@@ -10,12 +10,14 @@
 
         <!--menu-->
         <div class="d-flex align-items-center">
-            <h3 class="fs-55 mb-0 text-nowrap">
+            <a href="{{route('front.course',$lesson->course->id)}}" class="p-0 m-0 text-decoration-none text-dark">
+                <h3 class="fs-55 mb-0 text-nowrap fw-medium">
                 <span>
                     درس های دوره
                 </span>
-                <span>{{\Illuminate\Support\Str::limit($lesson->course->title,30)}}</span>
-            </h3>
+                    <span>{{\Illuminate\Support\Str::limit($lesson->course->title,30)}}</span>
+                </h3>
+            </a>
         </div>
         <!--end menu-->
 

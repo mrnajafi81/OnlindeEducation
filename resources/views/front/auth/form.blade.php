@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label class="form-label">متن کپچا :</label>
+                                <label class="form-label">تصویر امنیتی :</label>
                                 <div class="input-group">
                                     <input type="text" name="captcha" class="form-control" style="direction:ltr !important;text-align: left!important;">
                                     <span class="input-group-text p-0 m-0">

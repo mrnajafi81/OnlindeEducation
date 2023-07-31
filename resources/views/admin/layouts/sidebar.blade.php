@@ -8,11 +8,6 @@
                 میزکار
             </a>
 
-            <a href="{{route('front.index')}}" class="nav-item nav-link d-block">
-                <span class="fa fa-home" style="margin-left: 5px"></span>
-                دیدن سایت
-            </a>
-
             <a href="#" class="nav-item nav-link d-block dropdown-toggle {{request()->routeIs('users.*') ? 'active' : ''}}" data-bs-toggle="collapse"
                data-bs-target="#userCollapse" role="button" aria-expanded="false">
                 <span class="fa fa-users" style="margin-left: 5px"></span>

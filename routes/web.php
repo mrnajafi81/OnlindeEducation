@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\PaysController as AdminPaysController;
 use App\Http\Controllers\admin\TestsController as AdminTestsController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\SlidersController;
+use App\Http\Controllers\index\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +134,9 @@ Route::controller(IndexController::class)->name('front.')->group(function () {
 
     //lessons of course page
     Route::get('course/lessons/{lesson}', 'showCourseLessons')->name('lessons');
+
+    //aboutUs and Tell with us
+    Route::get('/about-us', 'aboutUs')->name('about-us');
 });
 
 //route of checkout, payments, do tests section
@@ -158,4 +162,14 @@ Route::middleware(['auth', 'roleIs:admin,user'])->group(function () {
         Route::get('/result/{test}', 'result')->name('result');
     });
 
+});
+
+//routes of user account section
+Route::middleware(['auth', 'roleIs:admin,user'])->name('account.')->prefix('account')->controller(AccountController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/profile', 'profile')->name('profile');
+    Route::post('/change-profile', 'changeProfile')->name('change-profile');
+    Route::get('/pays', 'pays')->name('pays');
+    Route::get('/courses', 'courses')->name('courses');
+    Route::get('/tests', 'tests')->name('tests');
 });

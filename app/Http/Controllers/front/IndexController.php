@@ -56,4 +56,9 @@ class IndexController extends Controller
 
         return $response;
     }
+
+    public function aboutUs()
+    {
+        return view('front.about_us');
+    }
 }

@@ -24,9 +24,9 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        //چک کردن کپچای وارد شده
+        //چک کردن کپچای (تصویر امنیتی) وارد شده
         if (!$this->validationCaptcha($request)) {
-            return back()->withErrors(['captcha' => 'متن کپچای وارد شده اشتباه است.']);
+            return back()->withErrors(['captcha' => 'متن تصویر امنیتی اشتباه وارد شده است.']);
         }
 
         //select user with entered number
@@ -133,9 +133,9 @@ class AuthController extends Controller
 
     public function verifyNumber(VerifyNumberRequest $request)
     {
-        //چک کردن کپچای وارد شده
+        //چک کردن کپچای (تصویر امنیتی) وارد شده
         if (!$this->validationCaptcha($request)) {
-            return back()->withErrors(['captcha' => 'متن کپچای وارد شده اشتباه است.']);
+            return back()->withErrors(['captcha' => 'متن تصویر امنیتی اشتباه وارد شده است.']);
         }
 
         // get verify code info

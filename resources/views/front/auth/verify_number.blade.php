@@ -6,11 +6,7 @@
     <section class="container-fluid py-2 py-sm-3 py-md-4 py-lg-5 px-2 px-md-3 px-lg-5">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto mt-3">
 
-            <div id="logo" class="w-100 d-flex justify-content-center mb-4">
-                {{--                <img src="{{asset('assets/images/bootstrap-logo.png')}}" width="100px" class="mx-auto">--}}
-            </div>
-
-            <div class="card border-primary px-md-4 px-lg-5">
+            <div class="card border-color-main px-md-4 px-lg-5">
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-center mb-4 mt-3">
                         <h1 class="h4 fw-bold text-muted">اعتبار سنجی شماره موبایل</h1>
@@ -37,12 +33,12 @@
 
                         <div class="mb-3">
                             <label class="form-label">کد اعتبارسنجی :</label>
-                            <input class="form-control border-primary @error('verify_code') is-invalid @enderror"
+                            <input class="form-control @error('verify_code') is-invalid @enderror"
                                    type="number" name="verify_code" placeholder="XXXXX">
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">متن کپچا :</label>
+                        <div class="mb-4">
+                            <label class="form-label">تصویر امنیتی : </label>
                             <div class="input-group">
                                 <input type="text" name="captcha" class="form-control"
                                        style="direction:ltr !important;text-align: left!important;">
@@ -56,7 +52,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary d-block w-100">
+                            <button type="submit" class="btn text-white border-color-main bg-color-main d-block w-100 main-hover">
                                 اعتبارسنجی
                             </button>
                         </div>
