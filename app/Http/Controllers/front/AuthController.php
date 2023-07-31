@@ -50,7 +50,6 @@ class AuthController extends Controller
         if ($user->role == 'admin') {
             return redirect(route('admin.index'));
         } else {
-            //TODO: redirect user to profile when login
             return redirect(route('front.index'));
         }
 
@@ -186,8 +185,7 @@ class AuthController extends Controller
         //login user
         Auth::login($user);
 
-        //TODO: redirect user when registered
-        return redirect(route('front.index'))->with('success', 'ثبت نام شما با موفقیت انجام شد.');
+        return redirect(route('account.index'))->with('success', 'ثبت نام شما با موفقیت انجام شد.');
     }
 
     public function changePasswordForm()
