@@ -219,6 +219,8 @@ return [
         'description' => 'توضیحات',
         'image' => 'تصویر',
         'about' => 'درباره',
+        'new_password' => 'پسورد جدید',
+        'current_password' => 'پسورد فعلی',
     ],
 
 ];

@@ -1,22 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CoursesController;
 use App\Http\Controllers\admin\GroupsController;
 use App\Http\Controllers\admin\LessonsController;
+use App\Http\Controllers\admin\PaysController as AdminPaysController;
 use App\Http\Controllers\admin\QuestionsController;
+use App\Http\Controllers\admin\SlidersController;
 use App\Http\Controllers\admin\TeachersController;
+use App\Http\Controllers\admin\TestsController as AdminTestsController;
+use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\CheckoutController;
 use App\Http\Controllers\front\IndexController;
 use App\Http\Controllers\front\PayController;
 use App\Http\Controllers\front\TestsController;
-use App\Http\Controllers\admin\PaysController as AdminPaysController;
-use App\Http\Controllers\admin\TestsController as AdminTestsController;
-use App\Http\Controllers\admin\UsersController;
-use App\Http\Controllers\admin\SlidersController;
-use App\Http\Controllers\index\AccountController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
