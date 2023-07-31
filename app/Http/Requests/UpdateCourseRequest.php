@@ -25,7 +25,7 @@ class UpdateCourseRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'max_digits:10'],
-            'duration' => ['required', 'string', 'max:100'],
+            'duration' => ['required', 'numeric', 'min:1'],
             'type' => ['required', 'string', 'max:100'],
             'teacher_id' => ['required', 'numeric', 'min:1'],
             'support_number' => ['required', 'numeric', 'digits:11'],
