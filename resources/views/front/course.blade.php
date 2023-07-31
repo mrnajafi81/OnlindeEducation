@@ -7,7 +7,8 @@
     <section class="container">
 
         <!--course title-->
-        <div id="course-title" class="shadow-sm d-flex align-items-center bg-white border border-success-subtle rounded-1 my-5">
+        <div id="course-title"
+             class="shadow-sm d-flex align-items-center bg-white border border-success-subtle rounded-1 my-5">
             <h1 class="fw-medium fs-3 border-start border-5 ps-2 ms-3 py-1 border-color-main">{{$course->title}}</h1>
         </div>
         <!--end course title-->
@@ -75,7 +76,7 @@
                                 </div>
 
                                 @if($userHasThisCourse)
-                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first())}}"
+                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first()->id)}}"
                                        class="btn btn-success fw-medium fs-55 w-100 my-2 shadow-sm">
                                         مشاهده دروس دوره
                                     </a>
@@ -89,7 +90,7 @@
                             @else
 
                                 @if($userHasThisCourse)
-                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first())}}"
+                                    <a href="{{route('front.lessons',$course->lessons()->orderBy('order')->first()->id)}}"
                                        class="btn btn-success fw-medium fs-55 w-100 my-2 shadow-sm">
                                         مشاهده دروس دوره
                                     </a>
@@ -155,10 +156,11 @@
                         </p>
                         <div class="d-flex flex-column align-items-start">
                             @foreach($course->lessons()->orderBy('order')->get() as $lesson)
-                                <p class="text-start mb-3 d-flex align-items-center gap-2 border-bottom border-color-main border-3">
+                                <a href="{{$userHasThisCourse ? route('front.lessons',$lesson->id) : '#'}}"
+                                   class="text-start text-decoration-none mb-3 d-flex align-items-center gap-2 border-bottom border-color-main border-3">
                                     <i class="fa fa-list-alt text-success"></i>
                                     <span class="text-muted mb-1 fw-medium">{{$lesson->title}}</span>
-                                </p>
+                                </a>
                             @endforeach
                         </div>
                     </div>
