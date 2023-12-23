@@ -11,6 +11,9 @@
 ## Project Setup
 
 1.clone Project
+```sh
+git clone https://github.com/mrnajafi81/OnlindeEducation.git
+```
 2.run
 ```sh
 composer install
