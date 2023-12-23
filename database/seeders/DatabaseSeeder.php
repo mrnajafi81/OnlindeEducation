@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            SliderSeeder::class,
+            TeacherSeeder::class,
+            CourseSeeder::class,
+            GroupSeeder::class,
+            LessonSeeder::class,
+            QuestionSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

@@ -16,10 +16,18 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'fullname' => 'محمدرضا نجفی',
-            'number' => '09176623243',
+            'fullname' => 'مدیر سایت',
+            'number' => '09910001122',
             'role' => 'admin',
-            'password' => Hash::make('@Najafi81'),
+            'password' => Hash::make('Admin@1234'),
+            'number_verified_at' => Carbon::now(),
+        ]);
+
+        User::create([
+            'fullname' => 'دانشجو',
+            'number' => '09910002233',
+            'role' => 'user',
+            'password' => Hash::make('User@1234'),
             'number_verified_at' => Carbon::now(),
         ]);
     }
