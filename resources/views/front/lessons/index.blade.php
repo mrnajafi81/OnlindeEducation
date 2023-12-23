@@ -29,7 +29,7 @@
                     @if($lesson->video)
                         <div class="lesson-video d-flex flex-column align-items-center">
                             <p class="fw-medium">ویدئوی این درس : </p>
-                            <video src="{{asset($lesson->video)}}" controls></video>
+                            <video class="mw-100" src="{{asset($lesson->video)}}" controls></video>
                         </div>
                     @endif
 

@@ -6,16 +6,16 @@
 
                 <div class="about-us w-100">
                     <h1 class="h5 fw-bolder w-100 p-0 m-0 mb-3 text-start">
-                        سامانه آموزش مجازی امامت
+                        سامانه آموزش آنلاین
                     </h1>
                     <p class="text-start mt-1 pb-0 mb-0">
                         سامانه آموزش مجازی امامت با بهره گیری از بهترین و بروزترین سیستم آموزش مجازی، با هدف ارائه آموزش
-                        های مجازی در زمینه کتب دینی از سال 1402 کار خود را شروع کرد.
+                        های مجازی از سال 1402 کار خود را شروع کرد.
                         خدمات این سامانه ارائه آموزش هایی مجازی در قالب ویدئو ، صوت و جزوات و آزمون های تستی برای
                         سنجش فراگیری هر درس می باشد.
                     </p>
                     <p class="text-start mt-2">
-                        آدرس : یاسوج - خیابان پاسداران
+                        این سایت صرفا یک نمونه کار می باشد و تمامی مطالب آزمایشی هستند و هیچ گونه معنا و مفهومی ندارند.
                     </p>
                 </div>
 
@@ -26,17 +26,17 @@
                     <nav class="nav px-0  flex-column">
                         <li class="nav-link ps-0" href="#">
                             <span class="text-dark fw-medium fs-55">پشتیبانی محتوا : </span>
-                            <spna class="text-muted text-nowrap">شماره تماس : 09176623243</spna>
+                            <spna class="text-muted text-nowrap">شماره تماس : 09910001122</spna>
                             <span>-</span>
                             <spna class="text-muted text-nowrap">شماره دفتر : 07433440000</spna>
                             <span>-</span>
-                            <spna class="text-muted text-nowrap">ایتا : @mr-najafi</spna>
+                            <spna class="text-muted text-nowrap">ایتا : @mr-eaita</spna>
                         </li>
                         <li class="nav-link ps-0" href="#">
                             <span class="text-dark fw-medium fs-55">پشتیبانی فنی : </span>
-                            <spna class="text-muted text-nowrap">شماره تماس : 09176623243</spna>
+                            <spna class="text-muted text-nowrap">شماره تماس : 09910001122</spna>
                             <span>-</span>
-                            <spna class="text-muted text-nowrap">ایتا : @mr-najafi</spna>
+                            <spna class="text-muted text-nowrap">ایتا : @mr-eita</spna>
                         </li>
                     </nav>
                 </div>
@@ -57,7 +57,7 @@
     </div>
     <div class="container py-2">
         <p class="text-center mt-1">
-            کلیه حقوق مادی و معنوی سایت متعلق به آموزش مجازی امامت می باشد.
+            کلیه حقوق مادی و معنوی سایت متعلق به <a href="https://github.com/mrnajafi81">MRezaNajafi</a> می باشد. هر گونه کپی برداری از این نمونه کار غیر مجاز می باشد.
         </p>
     </div>
 </footer>

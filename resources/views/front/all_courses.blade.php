@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 
-@section('title','سامانه آموزش مجازی امامت_همه دوره ها')
+@section('title','سامانه آموزش آنلاین_همه دوره ها')
 
 @section('contents')
 

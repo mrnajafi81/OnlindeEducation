@@ -50,7 +50,7 @@ class AuthController extends Controller
         if ($user->role == 'admin') {
             return redirect(route('admin.index'));
         } else {
-            return redirect(route('front.index'));
+            return redirect(route('account.index'));
         }
 
     }

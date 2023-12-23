@@ -4,7 +4,7 @@
         <!--logo-->
         <a href="{{route('front.index')}}" class="text-decoration-none">
             <h1 class="site-logo text-nowrap fw-bolder fs-3 text-color-main text-start m-0"
-                style="font-family: 'B Yekan' !important;">سامانه امامت</h1>
+                style="font-family: 'B Yekan' !important;">آموزش آنلاین</h1>
         </a>
         <!--end logo-->
 
