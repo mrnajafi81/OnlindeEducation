@@ -42,6 +42,13 @@ php artisan migrate --seed
 php artisan serve
 ```
 
+## Admin Panel Information
+number: 09910001122
+pass  : Admin@1234
+
+## User Panel Information
+number: 09910002233
+pass  : User@1234
 
 ## License
 This site is only a work sample and the content used in it is experimental.
