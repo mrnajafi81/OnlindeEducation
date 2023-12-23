@@ -10,13 +10,31 @@
 
 ## Project Setup
 
-1. create MySql database and set db information in .env
-2. run 
+1.clone Project
+2.run
+```sh
+composer install
+```
+3.run
+* in Linux
+```sh
+cp .env.example .env
+```
+* in Windows
+```sh
+copy .env.example .env
+```
+4. run
+```sh
+php artisan key:generate
+```
+5. create MySql database and set db information in .env
+6. run 
 ```sh
 php artisan migrate --seed
 ```
 * --seed is important
-3. run
+7. run
 ```sh
 php artisan serve
 ```
