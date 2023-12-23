@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/admin_style.css')}}">
 
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/image/icon/favicon.png')}}">
+
 
     <!--for private page js and css-->
     @yield('head')
